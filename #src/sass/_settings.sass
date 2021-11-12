@@ -1,0 +1,43 @@
+html
+  scroll-behavior: smooth
+body
+  overflow: hidden
+  // заменить ниже на свои значения
+  @extend %body
+  color: $text
+
+html,
+body
+  height: 100%
+  margin: 0
+
+ul, li
+  margin: 0
+  padding: 0
+h1,h2,h3
+  margin: 0
+input
+  outline: none
+
+.wrapper
+  display: flex
+  flex-direction: column
+  min-height: 100%
+
+.main
+  flex: 1 0 auto
+
+.footer
+  flex: 0 0 auto
+
+.container
+  max-width: 1170px
+  margin: 0 auto
+  padding: 0 15px
+
+.unvisible
+  position: absolute
+  left: -3000px
+  overflow: hidden
+  width: 0
+  height: 0

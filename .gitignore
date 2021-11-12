@@ -1,0 +1,4 @@
+node_modules/
+gulp-start/
+.jshintrc
+package-lock.json
