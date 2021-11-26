@@ -87,12 +87,11 @@ function css() {
         outputStyle: "expanded",
       })
     )
-    .pipe(mediagroup())
     .pipe(
       autoprefixer({
-        overrideBrowserslist: ["last 10 versions"],
+        overrideBrowserslist: ["last 7 versions"],
         grid: true,
-        cascade: true,
+        cascade: false,
       })
     )
     .pipe(dest(path.build.css))
@@ -118,9 +117,9 @@ function cssBuild() {
     .pipe(mediagroup())
     .pipe(
       autoprefixer({
-        overrideBrowserslist: ["last 10 versions"],
+        overrideBrowserslist: ["last 7 versions"],
         grid: true,
-        cascade: true,
+        cascade: false,
       })
     )
     .pipe(dest(path.build.css))
