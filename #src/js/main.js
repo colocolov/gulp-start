@@ -1,5 +1,5 @@
 // слайдер на главной
-const headerSlider = new Swiper('.tophead-slider', {
+const headerSlider = new Swiper(".tophead-slider", {
   // loop: true,
   autoplay: {
     //пауза между прокруткой
@@ -13,21 +13,21 @@ const headerSlider = new Swiper('.tophead-slider', {
   speed: 800,
   // навигация по стрелкам
   navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
     // disabledClass: "stories-button__unactive",
     clickable: true,
     // для ппрвильного направления
   },
   // буллеты
   pagination: {
-    el: '.swiper-pagination',
-    type: 'bullets',
+    el: ".swiper-pagination",
+    type: "bullets",
     clickable: true,
     dynamicBullets: true,
   },
   //эффект перехода слайда (только если показ по 1-му слайду)
-  effect: 'fade',
+  effect: "fade",
   fadeEffect: {
     crossFade: true,
   },
@@ -58,4 +58,36 @@ const headerSlider = new Swiper('.tophead-slider', {
   },
   //
 });
-//-----
+//----- END
+
+// accordeon
+document.addEventListener("DOMContentLoaded", () => {
+  const accordeons = document.querySelectorAll(".accordeon__item");
+
+  accordeons.forEach((el) => {
+    el.addEventListener("click", (e) => {
+      const self = e.currentTarget;
+      const title = self.querySelector(".accordeon__name");
+      const content = self.querySelector(".accordeon__decription");
+
+      self.classList.toggle("active");
+    });
+  });
+});
+// ----- END
+
+// слайдер отзывов
+var reviewsSlider = new Swiper(".reviews__sliders", {
+  loop: true,
+  navigation: {
+    nextEl: ".reviews-button--right",
+    prevEl: ".reviews-button--left",
+    clickable: true,
+  },
+  pagination: {
+    el: ".swiper-pagination",
+    type: "bullets",
+    clickable: true,
+  },
+});
+//----- END

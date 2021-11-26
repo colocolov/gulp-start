@@ -1,0 +1,23 @@
+@mixin font-face($font-family, $url, $weight)
+  @font-face
+    font-family: "#{$font-family}"
+    src: url('../fonts/#{$url}.woff2') format('woff2')
+    //, url('../fonts/#{$url}.woff') format('woff')
+    font-weight: #{$weight}
+    font-display: swap
+    font-style: normal
+
+@mixin fl-all
+  display: flex
+  align-items: center
+  justify-content: space-between
+
+@mixin fl-c
+  display: flex
+  align-items: center
+  justify-content: center
+
+@mixin image-shadow
+  border-radius: 25px
+  overflow: hidden
+  filter: drop-shadow(2px 2px 25px rgba(0, 0, 0, 0.1))

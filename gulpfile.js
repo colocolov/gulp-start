@@ -24,7 +24,7 @@ let path = {
     html: source_folder + "/**/*.html",
     css: source_folder + "/sass/**/*.sass",
     js: source_folder + "/js/**/*.js",
-    images: source_folder + "/images/**/*.{jpg,png,gif,ico,webp}",
+    images: source_folder + "/images/**/*.{jpg,png,svg,gif,ico,webp}",
     svg: source_folder + "/images/icons/*.svg",
   },
   clean: "./" + project_folder + "/",
@@ -44,7 +44,7 @@ let { src, dest, task } = require("gulp"),
   svgsprite = require("gulp-svg-sprite"),
   webp = require("gulp-webp"),
   webphtml = require("gulp-webp-html"),
-  ttf2woff = require("gulp-ttf2woff"),
+  //ttf2woff = require("gulp-ttf2woff"),
   ttf2woff2 = require("gulp-ttf2woff2"),
   fonter = require("gulp-fonter"),
   uglify = require("gulp-uglify-es").default,
@@ -225,10 +225,10 @@ function fonts() {
     .pipe(dest(source_folder + "/fonts/"))
     .pipe(src(path.src.fonts))
     .pipe(ttf2woff2())
-    .pipe(dest(path.build.fonts))
-    .pipe(src(path.src.fonts))
-    .pipe(ttf2woff())
     .pipe(dest(path.build.fonts));
+  // .pipe(src(path.src.fonts))
+  // .pipe(ttf2woff())
+  // .pipe(dest(path.build.fonts));
 }
 //---END
 
