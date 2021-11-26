@@ -69,6 +69,12 @@ function html() {
       })
     )
     .pipe(webphtml())
+    .pipe(
+      htmlmin({
+        collapseWhitespace: true, // удаляем все переносы
+        removeComments: true, // удаляем все комментарии
+      })
+    )
     .pipe(dest(path.build.html))
     .pipe(browsersync.stream());
 }
@@ -252,11 +258,12 @@ function watchFiles(params) {
 
 let build = gulp.series(gulp.parallel(css, cssAdd, html, js, jsAdd, fonts, images, svgSprit));
 let watch = gulp.parallel(build, watchFiles, browserSync);
+// выгрузка в готовый проект
 let done = gulp.series(
   cleanDist,
   gulp.parallel(cssBuild, cssAdd, html, js, jsAdd, fonts, images, svgSprit),
   imagesConvert
-); // выгрузка в готовый проект
+);
 
 exports.css = css;
 exports.html = html;
