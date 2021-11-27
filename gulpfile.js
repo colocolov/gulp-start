@@ -15,8 +15,8 @@ let path = {
     html: [source_folder + "/*.html", "!" + source_folder + "/_*.html"],
     css: source_folder + "/sass/style.sass",
     cssadd: source_folder + "/css/*.css",
-    js: source_folder + "/js/main.js",
-    jsadd: [source_folder + "/js/*.js", "!" + source_folder + "/js/main.js"],
+    js: source_folder + "/js/scripts/*.js",
+    jsadd: [source_folder + "/js/*.js"],
     images: source_folder + "/images/**/*.{jpg,png,svg,gif,ico,webp}",
     fonts: source_folder + "/fonts/*.ttf",
   },
@@ -38,12 +38,14 @@ let { src, dest, task } = require("gulp"),
   autoprefixer = require("gulp-autoprefixer"),
   sourcemaps = require("gulp-sourcemaps"),
   mediagroup = require("gulp-group-css-media-queries"),
+  concat = require("gulp-concat"),
   cleancss = require("gulp-clean-css"),
   rename = require("gulp-rename"),
   imagemin = require("gulp-imagemin"),
   svgsprite = require("gulp-svg-sprite"),
   webp = require("gulp-webp"),
   webphtml = require("gulp-webp-html"),
+  htmlmin = require("gulp-htmlmin"),
   //ttf2woff = require("gulp-ttf2woff"),
   ttf2woff2 = require("gulp-ttf2woff2"),
   fonter = require("gulp-fonter"),
@@ -94,19 +96,12 @@ function css() {
         cascade: false,
       })
     )
-    .pipe(dest(path.build.css))
-    .pipe(cleancss())
-    .pipe(
-      rename({
-        extname: ".min.css",
-      })
-    )
     .pipe(sourcemaps.write("."))
     .pipe(dest(path.build.css))
     .pipe(browsersync.stream());
 }
 
-// build version
+// build version CSS
 function cssBuild() {
   return src(path.src.css)
     .pipe(
@@ -134,26 +129,40 @@ function cssBuild() {
 
 // копирование доп. стилей из src в готовый проект
 function cssAdd() {
-  return src(path.src.cssadd).pipe(dest(path.build.css));
+  return src(path.src.cssadd)
+    .pipe(concat("adv.css"))
+    .pipe(dest(path.build.css))
+    .pipe(cleancss())
+    .pipe(dest(path.build.css));
 }
 
 function js() {
   return src(path.src.js)
-    .pipe(fileinclude())
-    .pipe(dest(path.build.js))
-    .pipe(uglify())
-    .pipe(
-      rename({
-        extname: ".min.js",
-      })
-    )
+    .pipe(sourcemaps.init())
+    .pipe(concat("main.js"))
+    .pipe(sourcemaps.write("."))
     .pipe(dest(path.build.js))
     .pipe(browsersync.stream());
 }
 
-// копирование JS фалйов из src в готовый проект, кроме main.js
+// build version JS
+function jsBuild() {
+  return src(path.src.js)
+    .pipe(concat("main.js"))
+    .pipe(dest(path.build.js))
+    .pipe(uglify())
+    .pipe(concat("main.min.js"))
+    .pipe(dest(path.build.js))
+    .pipe(browsersync.stream());
+}
+
+// копирование дополнительных JS фалйов из src в готовый проект
 function jsAdd() {
-  return src(path.src.jsadd).pipe(dest(path.build.js)).pipe(browsersync.stream());
+  return src(path.src.jsadd)
+    .pipe(concat("adv.min.js"))
+    .pipe(uglify())
+    .pipe(dest(path.build.js))
+    .pipe(browsersync.stream());
 }
 
 //--- конвертирование JPG в WEBP + копирование JPG в dist
@@ -260,7 +269,7 @@ let watch = gulp.parallel(build, watchFiles, browserSync);
 // выгрузка в готовый проект
 let done = gulp.series(
   cleanDist,
-  gulp.parallel(cssBuild, cssAdd, html, js, jsAdd, fonts, images, svgSprit),
+  gulp.parallel(cssBuild, cssAdd, html, jsBuild, jsAdd, fonts, images, svgSprit),
   imagesConvert
 );
 
