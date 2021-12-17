@@ -70,6 +70,19 @@ function html() {
         basepath: "@file",
       })
     )
+    .pipe(dest(path.build.html))
+    .pipe(browsersync.stream());
+}
+
+// build version html
+function htmlBuild() {
+  return src(path.src.html)
+    .pipe(
+      fileinclude({
+        prefix: "@",
+        basepath: "@file",
+      })
+    )
     .pipe(webphtml())
     .pipe(
       htmlmin({
@@ -77,8 +90,7 @@ function html() {
         removeComments: true, // удаляем все комментарии
       })
     )
-    .pipe(dest(path.build.html))
-    .pipe(browsersync.stream());
+    .pipe(dest(path.build.html));
 }
 
 function css() {
@@ -269,7 +281,7 @@ let watch = gulp.parallel(build, watchFiles, browserSync);
 // выгрузка в готовый проект
 let done = gulp.series(
   cleanDist,
-  gulp.parallel(cssBuild, cssAdd, html, jsBuild, jsAdd, fonts, images, svgSprit),
+  gulp.parallel(cssBuild, cssAdd, htmlBuild, jsBuild, jsAdd, fonts, images, svgSprit),
   imagesConvert
 );
 
