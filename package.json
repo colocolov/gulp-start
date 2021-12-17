@@ -1,6 +1,6 @@
 {
   "name": "start-gulp",
-  "version": "1.0.0",
+  "version": "2.1.0",
   "description": "My package Gulp",
   "main": "index.html",
   "scripts": {
@@ -29,7 +29,11 @@
     "gulp-uglify-es": "^2.0.0",
     "gulp-webp": "^4.0.1",
     "gulp-webp-html": "^1.0.2",
-    "sass": "^1.43.4"
+    "sass": "^1.43.4",
+    "stylelint": "^14.1.0",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-standard": "^24.0.0",
+    "stylelint-order": "^5.0.0"
   },
   "dependencies": {
     "del": "^6.0.0"

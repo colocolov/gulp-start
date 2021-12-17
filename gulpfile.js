@@ -16,7 +16,7 @@ let path = {
     css: source_folder + "/sass/style.sass",
     cssadd: source_folder + "/css/*.css",
     js: source_folder + "/js/scripts/*.js",
-    jsadd: [source_folder + "/js/*.js"],
+    jsadd: [source_folder + "/js/vendor*.js"],
     images: source_folder + "/images/**/*.{jpg,png,svg,gif,ico,webp}",
     fonts: source_folder + "/fonts/*.ttf",
   },
@@ -276,12 +276,23 @@ function watchFiles(params) {
   gulp.watch([path.watch.svg], svgSprit);
 }
 
-let build = gulp.series(gulp.parallel(css, cssAdd, html, js, jsAdd, fonts, images, svgSprit));
+let build = gulp.series(
+  gulp.parallel(css, cssAdd, html, js, jsAdd, fonts, images, svgSprit)
+);
 let watch = gulp.parallel(build, watchFiles, browserSync);
 // выгрузка в готовый проект
 let done = gulp.series(
   cleanDist,
-  gulp.parallel(cssBuild, cssAdd, htmlBuild, jsBuild, jsAdd, fonts, images, svgSprit),
+  gulp.parallel(
+    cssBuild,
+    cssAdd,
+    htmlBuild,
+    jsBuild,
+    jsAdd,
+    fonts,
+    images,
+    svgSprit
+  ),
   imagesConvert
 );
 
