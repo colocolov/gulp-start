@@ -1,4 +1,4 @@
-const { notify } = require("browser-sync");
+const { notifyBrowser } = require("browser-sync");
 
 let project_folder = require("path").basename(__dirname);
 let source_folder = "#src";
@@ -14,9 +14,9 @@ let path = {
   src: {
     html: [source_folder + "/*.html", "!" + source_folder + "/_*.html"],
     css: source_folder + "/sass/style.sass",
-    cssadd: source_folder + "/css/*.css",
+    cssadd: source_folder + "/css/libs.scss",
     js: source_folder + "/js/scripts/*.js",
-    jsadd: [source_folder + "/js/vendor*.js"],
+    jsadd: [source_folder + "/js/l-ibs.js"],
     images: source_folder + "/images/**/*.{jpg,png,svg,gif,ico,webp}",
     fonts: source_folder + "/fonts/*.ttf",
   },
@@ -33,6 +33,8 @@ let path = {
 let { src, dest, task } = require("gulp"),
   gulp = require("gulp"),
   browsersync = require("browser-sync").create(),
+  plumber = require("gulp-plumber"),
+  notify = require("gulp-notify"),
   fileinclude = require("gulp-file-include"),
   scss = require("gulp-sass")(require("sass")),
   autoprefixer = require("gulp-autoprefixer"),
@@ -42,6 +44,7 @@ let { src, dest, task } = require("gulp"),
   cleancss = require("gulp-clean-css"),
   rename = require("gulp-rename"),
   imagemin = require("gulp-imagemin"),
+  newer = require("gulp-newer"),
   svgsprite = require("gulp-svg-sprite"),
   webp = require("gulp-webp"),
   webphtml = require("gulp-webp-html"),
@@ -58,12 +61,20 @@ function browserSync(params) {
       baseDir: "./" + project_folder + "/",
     },
     port: 3000,
-    notify: false,
+    notifyBrowser: false,
   });
 }
 
 function html() {
   return src(path.src.html)
+    .pipe(
+      plumber({
+        errorHandler: notify.onError((error) => ({
+          title: "HTML",
+          message: error.message,
+        })),
+      })
+    )
     .pipe(
       fileinclude({
         prefix: "@",
@@ -86,7 +97,7 @@ function htmlBuild() {
     .pipe(webphtml())
     .pipe(
       htmlmin({
-        collapseWhitespace: true, // удаляем все переносы
+        // collapseWhitespace: true, // удаляем все переносы
         removeComments: true, // удаляем все комментарии
       })
     )
@@ -95,6 +106,14 @@ function htmlBuild() {
 
 function css() {
   return src(path.src.css)
+    .pipe(
+      plumber({
+        errorHandler: notify.onError((error) => ({
+          title: "CSS",
+          message: error.message,
+        })),
+      })
+    )
     .pipe(sourcemaps.init())
     .pipe(
       scss({
@@ -141,15 +160,26 @@ function cssBuild() {
 
 // копирование доп. стилей из src в готовый проект
 function cssAdd() {
-  return src(path.src.cssadd)
-    .pipe(concat("adv.css"))
-    .pipe(dest(path.build.css))
-    .pipe(cleancss())
-    .pipe(dest(path.build.css));
+  return (
+    src(path.src.cssadd)
+      // .pipe(concat("adv.css"))
+      // .pipe(dest(path.build.css))
+      // .pipe(cleancss())
+      .pipe(scss())
+    // .pipe(dest(path.build.css))
+  );
 }
 
 function js() {
   return src(path.src.js)
+    .pipe(
+      plumber({
+        errorHandler: notify.onError((error) => ({
+          title: "JS",
+          message: error.message,
+        })),
+      })
+    )
     .pipe(sourcemaps.init())
     .pipe(concat("main.js"))
     .pipe(sourcemaps.write("."))
@@ -170,22 +200,27 @@ function jsBuild() {
 
 // копирование дополнительных JS фалйов из src в готовый проект
 function jsAdd() {
-  return src(path.src.jsadd)
-    .pipe(concat("adv.min.js"))
-    .pipe(uglify())
-    .pipe(dest(path.build.js))
-    .pipe(browsersync.stream());
+  return (
+    src(["node_modules/swiper/swiper-bundle.js"])
+      // src(path?.src.jsadd)
+      .pipe(concat("libs.js"))
+      // .pipe(uglify())
+      .pipe(dest(path.build.js))
+      .pipe(browsersync.stream())
+  );
 }
 
 //--- конвертирование JPG в WEBP + копирование JPG в dist
 function images() {
   return src(path.src.images)
+    .pipe(newer(path.build.images))
     .pipe(
       webp({
         quality: 75,
       })
     )
     .pipe(dest(path.build.images))
+    .pipe(newer(path.build.images))
     .pipe(src(path.src.images))
     .pipe(dest(path.build.images))
     .pipe(browsersync.stream());
@@ -195,12 +230,14 @@ function images() {
 //--- сжатие JPG
 function imagesConvert() {
   return src(path.src.images)
+    .pipe(newer(path.build.images))
     .pipe(
       imagemin({
         progressive: true,
         svgoPlugins: [{ removeViewBox: false }],
         interlaced: true,
         optimizationLevel: 3,
+        verbose: true,
       })
     )
     .pipe(dest(path.build.images));
@@ -277,7 +314,7 @@ function watchFiles(params) {
 }
 
 let build = gulp.series(
-  gulp.parallel(css, cssAdd, html, js, jsAdd, fonts, images, svgSprit)
+  gulp.parallel(css, html, js, jsAdd, fonts, images, svgSprit)
 );
 let watch = gulp.parallel(build, watchFiles, browserSync);
 // выгрузка в готовый проект
