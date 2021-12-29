@@ -43,6 +43,7 @@ let { src, dest, task } = require("gulp"),
   concat = require("gulp-concat"),
   cleancss = require("gulp-clean-css"),
   rename = require("gulp-rename"),
+  replace = require("gulp-replace"),
   imagemin = require("gulp-imagemin"),
   newer = require("gulp-newer"),
   svgsprite = require("gulp-svg-sprite"),
@@ -81,6 +82,7 @@ function html() {
         basepath: "@file",
       })
     )
+    .pipe(replace(/@img\//g, "images/"))
     .pipe(dest(path.build.html))
     .pipe(browsersync.stream());
 }
@@ -115,6 +117,7 @@ function css() {
       })
     )
     .pipe(sourcemaps.init())
+    .pipe(replace(/@img\//g, "../images/"))
     .pipe(
       scss({
         outputStyle: "expanded",
@@ -122,7 +125,7 @@ function css() {
     )
     .pipe(
       autoprefixer({
-        overrideBrowserslist: ["last 7 versions"],
+        overrideBrowserslist: ["last 5 versions"],
         grid: true,
         cascade: false,
       })
@@ -164,9 +167,17 @@ function cssAdd() {
     src(path.src.cssadd)
       // .pipe(concat("adv.css"))
       // .pipe(dest(path.build.css))
-      // .pipe(cleancss())
-      .pipe(scss())
-    // .pipe(dest(path.build.css))
+      // .pipe(
+      //   cleancss({
+      //     level: { 1: { specialComments: 0 } } /* , format: 'beautify' */,
+      //   })
+      // )
+      // .pipe(
+      //   scss({
+      //     outputStyle: "compact",
+      //   })
+      // )
+      .pipe(dest(path.build.css))
   );
 }
 
@@ -181,7 +192,7 @@ function js() {
       })
     )
     .pipe(sourcemaps.init())
-    .pipe(concat("main.js"))
+    .pipe(concat("main.min.js"))
     .pipe(sourcemaps.write("."))
     .pipe(dest(path.build.js))
     .pipe(browsersync.stream());
@@ -220,8 +231,8 @@ function images() {
       })
     )
     .pipe(dest(path.build.images))
-    .pipe(newer(path.build.images))
     .pipe(src(path.src.images))
+    .pipe(newer(path.build.images))
     .pipe(dest(path.build.images))
     .pipe(browsersync.stream());
 }

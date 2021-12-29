@@ -1,30 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#111111" />
-    <!-- <link rel="stylesheet" href="css/adv.css" /> -->
-    <link rel="stylesheet" href="css/style.css" />
-    <!-- подключение favicon -->
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="resources/favicon.png"
-    />
-    <title>Gulp</title>
-  </head>
+  @include('html/head.html', { "title":"Главная" })
   <body>
     <div class="wrapper">
-      @include('html/_header.html')
+      @include('html/header.html')
+
       <main class="main"></main>
-      @include('html/_footer.html')
+      <img src="@img/slide-1.jpg" alt="" />
+      @include('html/footer.html')
     </div>
 
     <!-- подключение скриптов -->
     <script src="js/libs.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/main.min.js"></script>
   </body>
 </html>
