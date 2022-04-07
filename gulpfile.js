@@ -25,6 +25,7 @@ let path = {
     css: source_folder + "/sass/**/*.sass",
     js: source_folder + "/js/**/*.js",
     images: source_folder + "/images/**/*.{jpg,png,svg,gif,ico,webp}",
+    fonts: source_folder + "/fonts/*.ttf",
     svg: source_folder + "/images/icons/*.svg",
   },
   clean: "./" + project_folder + "/",
@@ -299,7 +300,8 @@ function fonts() {
     .pipe(dest(source_folder + "/fonts/"))
     .pipe(src(path.src.fonts))
     .pipe(ttf2woff2())
-    .pipe(dest(path.build.fonts));
+    .pipe(dest(path.build.fonts))
+    .pipe(browsersync.stream());
   // .pipe(src(path.src.fonts))
   // .pipe(ttf2woff())
   // .pipe(dest(path.build.fonts));
@@ -321,6 +323,7 @@ function watchFiles(params) {
   gulp.watch([path.watch.css], css);
   gulp.watch([path.watch.js], js);
   gulp.watch([path.watch.images], images);
+  gulp.watch([path.watch.fonts], fonts);
   gulp.watch([path.watch.svg], svgSprit);
 }
 
