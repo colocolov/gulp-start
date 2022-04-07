@@ -7,6 +7,11 @@
     font-display: swap
     font-style: normal
 
+@mixin font($weight, $size, $height)
+  font-weight: $weight
+  font-size: $size
+  line-height: $height
+
 @mixin fl-all
   display: flex
   align-items: center
@@ -21,3 +26,8 @@
   border-radius: 25px
   overflow: hidden
   filter: drop-shadow(2px 2px 25px rgba(0, 0, 0, 0.1))
+
+@mixin hide
+  display: none
+  opacity: 0
+  visibility: hidden
