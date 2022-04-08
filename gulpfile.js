@@ -286,7 +286,8 @@ function svgSprit() {
         },
       })
     )
-    .pipe(dest(path.build.images));
+    .pipe(dest(path.build.images))
+    .pipe(browsersync.stream());
 }
 
 //--- конвертер шрифтов OTF в TTF -> WOFF
