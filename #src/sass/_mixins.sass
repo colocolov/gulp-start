@@ -9,8 +9,8 @@
 
 @mixin font($weight, $size, $height)
   font-weight: $weight
-  font-size: $size
-  line-height: $height
+  font-size: $size + px
+  line-height: $height / $size
 
 @mixin fl-all
   display: flex
