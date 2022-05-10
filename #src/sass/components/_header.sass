@@ -1,1 +1,39 @@
 .header
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 150px
+  background-color: $red
+  padding: 37px 0
+  color: $white
+  &__container
+    @include fl-all
+  &__logo
+    @include fl-all
+    img
+      width: 80px
+      height: 80px
+      margin-right: 30px
+  &__search
+    display: flex
+    align-items: center
+    width: 250px
+    &-input
+      position: relative
+      border: none
+      background-color: transparent
+      color: $white
+      &::placeholder
+        color: $white
+      &::before
+        position: absolute
+        content: ''
+        top: 0
+        left: 0
+    &-btn
+      width: 24px
+      height: 24px
+      margin-right: 17px
+      flex-shrink: 0
+    &-img

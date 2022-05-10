@@ -1,0 +1,53 @@
+.index-main
+  padding-top: 150px
+  &__wrap
+    display: flex
+    align-items: center
+    height: 100vh
+  &__add
+    margin-right: 98px
+    display: flex
+    flex-direction: column
+    align-items: center
+    &-logo
+      width: 340px
+      margin-bottom: 28px
+    &-btn
+      position: relative
+      // width: 295px
+      padding: 13px 54px 13px 91px
+      // display: block
+      &::after
+        position: absolute
+        content: ''
+        display: block
+        top: 14px
+        left: 52px
+        width: 20px
+        height: 20px
+        background: url(../images/icons/sprite.svg#plus)
+        background-repeat: no-repeat
+        background-size: contain
+        z-index: 3
+  &__verse
+    position: relative
+    width: 777px
+    padding-left: 141px
+    &::before
+      position: absolute
+      content: ''
+      width: 1231px
+      height: 1231px
+      left: 0
+      top: 0
+      background: radial-gradient(40.99% 30.57% at 64% 40.5%, #E8101E 0%, #DC101C 18.75%, #D00F1A 39.06%, #C60F19 55.73%, #B70F16 79.17%, #AA0E14 100%)
+      box-shadow: 0px 0px 10px 3px rgba(112, 0, 0, 0.3)
+      border-radius: 50%
+      z-index: -1
+      transform: translateY(-39%)
+    &-title
+      margin-bottom: 35px
+      @include font(400, 48, 48)
+    &-text
+      @include font(700, 48, 56)
+      color: #FFFFFF

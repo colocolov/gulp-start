@@ -97,6 +97,7 @@ function htmlBuild() {
         basepath: "@file",
       })
     )
+    .pipe(replace(/@img\//g, "images/"))
     .pipe(webphtml())
     .pipe(
       htmlmin({
