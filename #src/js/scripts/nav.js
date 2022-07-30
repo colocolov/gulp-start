@@ -64,9 +64,10 @@ if (iconMenu) {
   });
 }
 // закрытие при клике
-menuLink.addEventListener("click", function (e) {
-  console.log("yes");
-  document.body.classList.remove("_lock");
-  iconMenu.classList.remove("_active");
-  menuBody.classList.remove("_active");
+menuLink.forEach((item) => {
+  item.addEventListener("click", () => {
+    document.body.classList.remove("_lock");
+    iconMenu.classList.remove("_active");
+    menuBody.classList.remove("_active");
+  });
 });
