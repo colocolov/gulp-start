@@ -13,8 +13,8 @@ const headerSlider = new Swiper(".tophead-slider", {
   speed: 800,
   // навигация по стрелкам
   navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
+    nextEl: "main-slider__btn-next",
+    prevEl: "main-slider__btn-prev",
     // disabledClass: "stories-button__unactive",
     clickable: true,
     // для ппрвильного направления
