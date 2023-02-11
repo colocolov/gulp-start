@@ -25,6 +25,10 @@ input
   overflow: hidden
 
 .main
+  /*  flex-grow - увеличиваться в размере: 0 зап-т, 1 раз-т
+   flex-shrink - уменьшаться в размере: 0 зап-т, 1 раз-т
+   flex-basis - определяет размер элемента по умолчанию
+   */
   flex: 1 0 auto
 
 .footer
@@ -54,10 +58,14 @@ input
   outline: none
 
 .btn
+  align-self: center // если кнпка находится во flex-контейнере и нужно выровнять ее по середине
   background: $bgc
   border-radius: 20px
   padding: 10px 32px
   color: $white
+  @include font(700, 16, 2)
+  text-align: center
+  text-transform: uppercase
   transition: all 0.3s linear
 
 .unvisible

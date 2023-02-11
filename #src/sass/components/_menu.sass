@@ -40,7 +40,7 @@
     @include font(600, 16, 20)
     color: $grey
     text-transform: uppercase
-    transition: color 0.3s ease-in-out
+    transition: color 0.3s ease
     &:not(:last-child)
       margin-right: 39px
     // нижняя линия при наведении
@@ -52,7 +52,7 @@
       width: 0%
       height: 2px
       background-color: $white
-      transition: 0.5s
+      transition: width 0.5s ease
     &:last-child a
       transition: 0.3s linear
       margin-left: 120px
@@ -67,7 +67,7 @@
     //     .menu__arrow
     //       transform: rotate(-180deg)
     //     .menu__arrow
-    //       color: $orange
+    //       color: $black
     // @media (min-width: 768px)
     //   &._hover
     //     .menu__sub-list
@@ -98,7 +98,7 @@
   //   background-position: center
   //   outline: none
   //   cursor: pointer
-  //   transition: all 0.3s ease-in-out
+  //   transition: all 0.5s ease
   //   // transform: rotate(90deg)
 
   // &__sub-list
@@ -111,7 +111,7 @@
   //     left: 0
   //     top: 100%
   //     min-width: 50px
-  //     transition: all 0.3s ease-in-out
+  //     transition: all 0.5s ease
   //     transform: translate(0px, 10px)
   //     visibility: hidden
   //     opacity: 0

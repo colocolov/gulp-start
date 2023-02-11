@@ -1,7 +1,5 @@
 .reviews
-  padding-top: 100px
-  padding-bottom: 100px
-  background-color: $grey
+  padding: 100px 0
   &__sliders
     margin-bottom: 70px
   &__slide
@@ -42,24 +40,24 @@
     color: $text
   &-button
     position: absolute
+    display: flex
+    align-items: center
+    justify-content: center
     top: 45%
-    transform: translateY(-50%)
-    border: 2px solid $bl
-    fill: $bl
     width: 56px
     height: 56px
-    display: flex
-    justify-content: center
-    align-items: center
     border-radius: 50%
+    border: 2px solid $black
+    fill: $bl
     background-color: transparent
+    transform: translateY(-50%)
     cursor: pointer
     outline: none
     z-index: 50
     transition: linear 0.3s
     &:hover
-      border: 2px solid $bl
-      background-color: $bl
+      border: 2px solid $black
+      background-color: $black
       fill: $bgc
     &--left
       left: 0
@@ -68,7 +66,7 @@
 
 // .swiper-pagination-bullets
 .swiper-pagination-bullet
-  background: #fff
+  background: $bgc
   opacity: 1
 .swiper-pagination-bullet-active
-  background: $bl
+  background: $black
