@@ -1,34 +1,34 @@
 const { notifyBrowser } = require("browser-sync");
 
-let project_folder = require("path").basename(__dirname);
-let source_folder = "#src";
+let projectFolder = require("path").basename(__dirname);
+let sourceFolder = "#src";
 
 let path = {
   build: {
-    html: project_folder + "/",
-    css: project_folder + "/css",
-    js: project_folder + "/js",
-    images: project_folder + "/images",
-    fonts: project_folder + "/fonts",
+    html: projectFolder + "/",
+    css: projectFolder + "/css",
+    js: projectFolder + "/js",
+    images: projectFolder + "/images",
+    fonts: projectFolder + "/fonts",
   },
   src: {
-    html: [source_folder + "/*.html", "!" + source_folder + "/_*.html"],
-    css: source_folder + "/sass/style.sass",
-    cssadd: source_folder + "/css/libs.scss",
-    js: source_folder + "/js/scripts/*.js",
-    jsadd: [source_folder + "/js/l-ibs.js"],
-    images: source_folder + "/images/**/*.{jpg,png,svg,gif,ico,webp}",
-    fonts: source_folder + "/fonts/*.ttf",
+    html: [sourceFolder + "/*.html", "!" + sourceFolder + "/_*.html"],
+    css: sourceFolder + "/sass/style.sass",
+    cssadd: sourceFolder + "/css/libs.scss",
+    js: sourceFolder + "/js/scripts/*.js",
+    jsadd: [sourceFolder + "/js/l-ibs.js"],
+    images: sourceFolder + "/images/**/*.{jpg,png,svg,gif,ico,webp}",
+    fonts: sourceFolder + "/fonts/*.ttf",
   },
   watch: {
-    html: source_folder + "/**/*.html",
-    css: source_folder + "/sass/**/*.sass",
-    js: source_folder + "/js/**/*.js",
-    images: source_folder + "/images/**/*.{jpg,png,svg,gif,ico,webp}",
-    fonts: source_folder + "/fonts/*.ttf",
-    svg: source_folder + "/images/icons/*.svg",
+    html: sourceFolder + "/**/*.html",
+    css: sourceFolder + "/sass/**/*.sass",
+    js: sourceFolder + "/js/**/*.js",
+    images: sourceFolder + "/images/**/*.{jpg,png,svg,gif,ico,webp}",
+    fonts: sourceFolder + "/fonts/*.ttf",
+    svg: sourceFolder + "/images/icons/*.svg",
   },
-  clean: "./" + project_folder + "/",
+  clean: "./" + projectFolder + "/",
 };
 
 let { src, dest, task } = require("gulp"),
@@ -60,7 +60,7 @@ let { src, dest, task } = require("gulp"),
 function browserSync(params) {
   browsersync.init({
     server: {
-      baseDir: "./" + project_folder + "/",
+      baseDir: "./" + projectFolder + "/",
     },
     port: 3000,
     notifyBrowser: false,
@@ -184,7 +184,10 @@ function cssAdd() {
 }
 
 function js() {
-  return src(path.src.js)
+  return src([
+    // "node_modules/swiper/swiper-bundle.js",
+  path.src.js
+  ])
     .pipe(
       plumber({
         errorHandler: notify.onError((error) => ({
@@ -202,7 +205,10 @@ function js() {
 
 // build version JS
 function jsBuild() {
-  return src(path.src.js)
+  return src([
+    // "node_modules/swiper/swiper-bundle.js",
+    path.src.js
+  ])
     .pipe(concat("main.js"))
     .pipe(dest(path.build.js))
     .pipe(uglify())
@@ -260,7 +266,7 @@ function imagesConvert() {
 //--- ОТДЕЛЬНЫЙ TASK - создание SVG sprite
 gulp.task("svgSprite", function () {
   return gulp
-    .src([source_folder + "/images/icons/*.svg"])
+    .src([sourceFolder + "/images/icons/*.svg"])
     .pipe(
       svgsprite({
         mode: {
@@ -276,7 +282,7 @@ gulp.task("svgSprite", function () {
 //---END
 
 function svgSprit() {
-  return src([source_folder + "/images/icons/*.svg"])
+  return src([sourceFolder + "/images/icons/*.svg"])
     .pipe(
       svgsprite({
         mode: {
@@ -293,13 +299,13 @@ function svgSprit() {
 
 //--- конвертер шрифтов OTF в TTF -> WOFF
 function fonts() {
-  return src([source_folder + "/fonts/*.otf"])
+  return src([sourceFolder + "/fonts/*.otf"])
     .pipe(
       fonter({
         formats: ["ttf"],
       })
     )
-    .pipe(dest(source_folder + "/fonts/"))
+    .pipe(dest(sourceFolder + "/fonts/"))
     .pipe(src(path.src.fonts))
     .pipe(ttf2woff2())
     .pipe(dest(path.build.fonts))
