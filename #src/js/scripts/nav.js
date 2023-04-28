@@ -64,10 +64,12 @@ if (iconMenu) {
   });
 }
 // закрытие при клике
-menuLink.forEach((item) => {
-  item.addEventListener("click", () => {
-    document.body.classList.remove("_lock");
-    iconMenu.classList.remove("_active");
-    menuBody.classList.remove("_active");
+if (menuLink.length) {
+  menuLink.forEach((item) => {
+    item.addEventListener("click", () => {
+      document.body.classList.remove("_lock");
+      iconMenu.classList.remove("_active");
+      menuBody.classList.remove("_active");
+    });
   });
-});
+}

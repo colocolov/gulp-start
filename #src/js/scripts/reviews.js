@@ -1,5 +1,5 @@
 // слайдер отзывов
-var reviewsSlider = new Swiper(".reviews__sliders", {
+const reviewsSlider = new Swiper(".reviews__sliders", {
   loop: true,
   navigation: {
     nextEl: ".reviews-button--right",

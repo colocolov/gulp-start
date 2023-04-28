@@ -1,5 +1,5 @@
 // слайдер на главной
-const headerSlider = new Swiper(".tophead-slider", {
+const mainSlider = new Swiper(".tophead-slider", {
   // loop: true,
   autoplay: {
     //пауза между прокруткой
