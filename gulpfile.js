@@ -17,16 +17,18 @@ let path = {
     cssadd: sourceFolder + "/css/libs.scss",
     js: sourceFolder + "/js/scripts/*.js",
     jsadd: [sourceFolder + "/js/l-ibs.js"],
-    images: sourceFolder + "/images/**/*.{jpg,png,svg,gif,ico,webp}",
+    images: sourceFolder + "/images/**/*.{jpg,png,gif,ico,webp}",
+    svg: sourceFolder + "/images/icons/*.svg",
     fonts: sourceFolder + "/fonts/*.ttf",
   },
   watch: {
     html: sourceFolder + "/**/*.html",
     css: sourceFolder + "/sass/**/*.sass",
     js: sourceFolder + "/js/**/*.js",
-    images: sourceFolder + "/images/**/*.{jpg,png,svg,gif,ico,webp}",
-    fonts: sourceFolder + "/fonts/*.ttf",
+    images: sourceFolder + "/images/**/*.{jpg,png,gif,ico,webp}",
     svg: sourceFolder + "/images/icons/*.svg",
+    fonts: sourceFolder + "/fonts/*.ttf",
+    // svg: sourceFolder + "/images/icons/*.svg",
   },
   clean: "./" + projectFolder + "/",
 };
@@ -186,8 +188,8 @@ function cssAdd() {
 function js() {
   return src([
     // "node_modules/swiper/swiper-bundle.js",
-  path.src.js
-  ])
+    path.src.js
+    ])
     .pipe(
       plumber({
         errorHandler: notify.onError((error) => ({
@@ -207,8 +209,8 @@ function js() {
 function jsBuild() {
   return src([
     // "node_modules/swiper/swiper-bundle.js",
-    path.src.js
-  ])
+      path.src.js
+    ])
     .pipe(concat("main.js"))
     .pipe(dest(path.build.js))
     .pipe(uglify())
@@ -241,6 +243,15 @@ function images() {
     .pipe(dest(path.build.images))
     .pipe(src(path.src.images))
     .pipe(newer(path.build.images))
+    .pipe(
+      imagemin({
+        progressive: true,
+        svgoPlugins: [{ removeViewBox: false }],
+        interlaced: true,
+        optimizationLevel: 3,
+        verbose: true,
+      })
+    )
     .pipe(dest(path.build.images))
     .pipe(browsersync.stream());
 }
@@ -288,7 +299,7 @@ function svgSprit() {
         mode: {
           stack: {
             sprite: "../icons/sprite.svg",
-            //example: true,
+            // example: true,
           },
         },
       })
@@ -321,22 +332,18 @@ function cleanDist() {
   return del(path.clean);
 }
 
-function cleanIcons() {
-  return del("!" + path.build.images + "/icons/sprite.svg");
-}
-
 // отслеживание файлов
 function watchFiles(params) {
   gulp.watch([path.watch.html], html);
   gulp.watch([path.watch.css], css);
   gulp.watch([path.watch.js], js);
   gulp.watch([path.watch.images], images);
-  gulp.watch([path.watch.fonts], fonts);
+  // gulp.watch([path.watch.fonts], fonts);
   gulp.watch([path.watch.svg], svgSprit);
 }
 
 let build = gulp.series(
-  gulp.parallel(css, html, js, jsAdd, fonts, images, svgSprit)
+  gulp.parallel(css, html, js, images)
 );
 let watch = gulp.parallel(build, watchFiles, browserSync);
 // выгрузка в готовый проект
@@ -347,7 +354,7 @@ let done = gulp.series(
     cssAdd,
     htmlBuild,
     jsBuild,
-    jsAdd,
+    // jsAdd,
     fonts,
     images,
     svgSprit
@@ -359,6 +366,7 @@ exports.css = css;
 exports.html = html;
 exports.js = js;
 exports.images = images;
+exports.svgSprit = svgSprit;
 exports.fonts = fonts;
 exports.build = build;
 exports.watch = watch;
