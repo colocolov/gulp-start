@@ -35,6 +35,16 @@ const mainSlider = new Swiper(".tophead-slider", {
   slidesPerView: 3.6,
   // расстояние между слайдами
   spaceBetween: 40,
+
+  // адаптив
+  breakpoints: {
+    // when window width is >= 320px
+    480: {
+      slidesPerView: 2,
+      spaceBetween: 20
+    },
+  },
+
   //отложенная загрузка:
   //отключаем презагрузку картинок
   preloadImages: false,

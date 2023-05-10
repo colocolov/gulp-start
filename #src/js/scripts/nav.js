@@ -57,7 +57,7 @@ const iconMenu = document.querySelector(".menu__icon");
 const menuBody = document.querySelector(".menu__body");
 const menuLink = document.querySelectorAll(".menu__item");
 if (iconMenu) {
-  iconMenu.addEventListener("click", function (e) {
+  iconMenu.addEventListener("click", (e) => {
     document.body.classList.toggle("_lock");
     iconMenu.classList.toggle("_active");
     menuBody.classList.toggle("_active");
@@ -67,9 +67,14 @@ if (iconMenu) {
 if (menuLink.length) {
   menuLink.forEach((item) => {
     item.addEventListener("click", () => {
-      document.body.classList.remove("_lock");
-      iconMenu.classList.remove("_active");
-      menuBody.classList.remove("_active");
+      removeActiveClass();
     });
   });
+}
+
+
+function removeActiveClass () {
+  document.body.classList.remove("_lock");
+  iconMenu.classList.remove("_active");
+  menuBody.classList.remove("_active");
 }
