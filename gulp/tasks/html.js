@@ -12,7 +12,10 @@ export const html = () => {
         })
       )
     )
-    .pipe(fileInclude())
+    .pipe(fileInclude({
+      prefix: '@',
+      basepath: '@file'
+    }))
     .pipe(app.plugins.replace(/@img\//g, "images/"))
     .pipe(app.plugins.if(app.isBuild, webpHtml()))
     .pipe(app.gulp.dest(app.path.build.html))
