@@ -9,9 +9,10 @@
       width: 100%
       height: 100%
       padding: 150px 30px 50px 70px
-      background-color: rgba($bgc,0.9)
+      background-color: rgba($text, 0.9)
       overflow: auto
       transition: right 0.5s ease 0s
+      // подложка под верхнее меню, если оно имеет фон
       &::before
         content: ''
         position: fixed
@@ -19,7 +20,7 @@
         right: -100%
         width: 100%
         height: 74px
-        background-color: $bgc
+        // background-color: $text
         transition: right 0.5s ease 0s
         z-index: 2
     &._active
@@ -27,7 +28,7 @@
       &::before
         right: 0
   &__list
-    @include fl-all
+    @include fx-all
     flex-wrap: wrap
     @media (max-width: 768px)
       flex-direction: column
@@ -35,10 +36,10 @@
 
   &__item
     position: relative
-    @include fl-all
+    @include fx-all
     flex-wrap: wrap
     @include font(600, 16, 20)
-    color: $grey
+    color: $text
     text-transform: uppercase
     transition: color 0.3s ease
     &:not(:last-child)
@@ -53,9 +54,12 @@
       height: 2px
       background-color: $white
       transition: width 0.5s ease
-    &:last-child a
-      transition: 0.3s linear
-      margin-left: 120px
+    // уточнить!!!
+    // &:last-child a
+    //   transition: 0.3s linear
+    //   margin-left: 120px
+
+
     // субменю
     // @media (any-hover: hover)
     //   &:hover
@@ -80,7 +84,8 @@
     @media (max-width: 768px)
       margin-bottom: 40px
       font-weight: 800
-      font-size: 18px
+      font-size: 32px
+      color: $grey
       &:not(:last-child)
         margin-right: 0
         margin-bottom: 10px
@@ -135,7 +140,7 @@
       // top: 18px
       // right: 10px
       width: 30px
-      height: 30px
+      height: 22px
       border: none
       background-color: transparent
       cursor: pointer
@@ -148,23 +153,24 @@
       left: 0
       width: 100%
       height: 2px
-      background-color: $white
+      background-color: rgba($text, 0.9)
       &:first-child
         top: 0
-        transition: transform 0.3s ease-in-out, top 0.3s ease-in-out
+        transition: transform .3s ease-in-out, top .3s ease-in-out, background-color .5s ease-out
       &:last-child
         top: auto
         bottom: 0
-        transition: transform 0.3s ease-in-out, top 0.3s ease-in-out
+        transition: transform .3s ease-in-out, top .3s ease-in-out, background-color .5s ease-out
     &._active
       span
         transform: scale(0)
-        transition: transform 0.3s ease-in-out
+        background-color: $white
+        transition: transform 0.3s ease-in-out, background-color .5s ease-out
         &:first-child
           top: calc( 50% - 2px )
           transform: rotate(-45deg)
-          transition: transform 0.3s ease-in-out, top 0.3s ease-in-out
+          transition: transform .3s ease-in-out, top .3s ease-in-out
         &:last-child
           top: calc( 50% - 2px )
           transform: rotate(45deg)
-          transition: transform 0.3s ease-in-out, top 0.3s ease-in-out
+          transition: transform .3s ease-in-out, top .3s ease-in-out

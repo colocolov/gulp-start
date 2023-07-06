@@ -12,12 +12,9 @@ export const js = () => {
           })
         )
       )
-      // .pipe(fileInclude())
-      // .pipe(app.plugins.replace(/@img\//g, "images/"))
-      // .pipe(webpHtml())
       .pipe(
         webpack({
-          mode: app.isDev ? "production" : "development",
+          mode: app.isBuild ? "production" : "development",
           output: {
             filename: "main.min.js",
           },

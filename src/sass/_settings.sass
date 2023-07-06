@@ -8,7 +8,7 @@
   min-width: 320px
   min-height: 100%
   @extend %body
-  background-color: #323232
+  background-color: $bgc
   color: $text
   &._lock
     overflow: hidden !important
@@ -24,16 +24,14 @@ input
 .wrapper
   display: flex
   flex-direction: column
-  min-height: 100%
+  // min-height: 100%
+  min-height: 100vh
   overflow: hidden
-
-  /*
-   flex-grow - увеличиваться в размере: 0 зап-т, 1 раз-т
-   flex-shrink - уменьшаться в размере: 0 зап-т, 1 раз-т
-   flex-basis - определяет размер элемента по умолчанию
-   */
   > main
-    flex: 1 0 auto
+    // flex-grow - увеличиваться в размере: 0 зап-т, 1 раз-т
+    // flex-shrink - уменьшаться в размере: 0 зап-т, 1 раз-т
+    // flex-basis - определяет размер элемента по умолчанию
+    flex: 1 1 auto
 
 .footer
   flex: 0 0 auto

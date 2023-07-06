@@ -16,6 +16,9 @@ export const path = {
     files: `${buildFolder}/files/`,
     favicon: `${buildFolder}/images/favicon/`,
   },
+  done: {
+    html: `./build/`,
+  },
   src: {
     sass: `${srcFolder}/sass/style.sass`,
     js: `${srcFolder}/js/main.js`,

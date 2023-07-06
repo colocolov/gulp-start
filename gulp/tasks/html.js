@@ -18,6 +18,8 @@ export const html = () => {
     }))
     .pipe(app.plugins.replace(/@img\//g, "images/"))
     .pipe(app.plugins.if(app.isBuild, webpHtml()))
+    // копирование готовой версии в другую папку
+    // .pipe(app.plugins.if(app.isBuild, app.gulp.dest(app.path.done.html)))
     .pipe(app.gulp.dest(app.path.build.html))
     .pipe(app.plugins.browserSync.stream());
 };

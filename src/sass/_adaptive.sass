@@ -1,0 +1,44 @@
+
+// Адаптивное свойство - /**/ (свойство, макс размер, мин размер, старт разрешениея, xx, )
+@mixin adaptiveValue($property, $startSize, $minSize, $widthFrom: $containerWidth, $widthTo: $minWidth, $keepSize: 0)
+	// Брейк-поинты в EM
+  $widthFromMedia: em($widthFrom)
+  $widthToMedia: em($widthTo)
+	// Ночальное и конечное значение в REM
+  $minSizeValue: rem($minSize)
+  $startSizeValue: rem($startSize)
+	// Пересчитываем переменные относительно
+	// размера шрифта по умолчанию
+  $minWidth: math.div($minWidth, 16)
+  $maxWidth: math.div($maxWidth, 16)
+  $containerWidth: math.div($containerWidth, 16)
+  $addSize: math.div($startSize - $minSize, 16)
+  $widthTo: math.div($widthTo, 16)
+  $widthFrom: math.div($widthFrom, 16)
+	// Если указано ограничение у контейнера,
+	// либо указана стартовая или конечная ширина
+	// включаем режим работы в промежутке ширин
+  @if ($maxWidthContainer > 0 or $widthFrom != $containerWidth or $widthTo != $minWidth) and $widthFrom > $widthTo
+		// Если стартовая ширина равна ширине контейнера + отступы,
+		// или указана настройка "keepSize" ставим значение
+		// по умолчанию равное стартовому размеру
+    @if $widthFrom == $containerWidth or $keepSize == 1 or $keepSize == 2
+      @media (min-width: $widthFromMedia)
+        #{$property}: $startSizeValue
+
+
+		// Адаптируем размер в промежутке между указанными ширинами вьюпорта
+    @media (min-width: $widthToMedia) and (max-width: $widthFromMedia)
+      #{$property}: calc(#{$minSizeValue} + #{$addSize} * (((100vw - #{$widthTo + rem})) / ((#{$widthFrom - $widthTo}))))
+
+		// Если конечная ширина равна минимальной ширине
+		// или указана настройка "keepSize" ставим значение
+		// по умолчанию равное конечному размеру
+    @if $widthTo == $minWidth or $keepSize == 1 or $keepSize == 3
+      @media (max-width: $widthToMedia)
+        #{$property}: $minSizeValue
+
+
+  @else
+		// Режим работы по всей ширине вьюпорта
+    #{$property}: calc(#{$minSizeValue} + #{$addSize} * (((100vw - #{$widthTo + rem})) / ((#{$maxWidth - $widthTo}))))
