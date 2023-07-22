@@ -42,3 +42,23 @@
   opacity: 0
   visibility: hidden
 
+// media запросы
+@mixin mediaDesk
+  @media screen and (max-width: $desktop)
+    @content
+
+@mixin mediaNotebook
+  @media screen and (max-width: $pc)
+    @content
+
+@mixin mediaTablet
+  @media screen and (max-width: $tablet)
+    @content
+
+@mixin mediaPhone
+  @media screen and (max-width: $mobile)
+    @content
+
+@mixin mediaPhoneMid
+  @media screen and (max-width: $mobileMid)
+    @content

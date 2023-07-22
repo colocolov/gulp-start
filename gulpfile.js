@@ -37,7 +37,7 @@ function watcher() {
 const fonts = gulp.series(otfToTtf, ttfToWoff);
 
 // Основные задачи
-const mainTasks = gulp.parallel(copy, sass, html, js, images);
+const mainTasks = gulp.parallel(copy, sass, html, js, images, svgSprite);
 
 // Построение сценариев выполнения задач
 const dev = gulp.series(mainTasks, gulp.parallel(watcher, server));

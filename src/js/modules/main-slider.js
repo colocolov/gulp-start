@@ -3,6 +3,10 @@ import Swiper, { Navigation, Pagination } from "swiper";
 
 Swiper.use([Pagination, Navigation]);
 
+// устанавливаем свой размер отступов через глобальную переменную --gap
+const gap = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--gap"));
+console.log(gap);
+
 // слайдер на главной
 new Swiper(_vars.heroSliderEl, {
   // loop: true,
@@ -39,6 +43,8 @@ new Swiper(_vars.heroSliderEl, {
   // показ кол-ва слайдов (работает, когда откл effect: "fade")
   slidesPerView: 3.6,
   // расстояние между слайдами
+  
+  // spaceBetween: gap, // свой размер
   spaceBetween: 40,
 
   // адаптив
