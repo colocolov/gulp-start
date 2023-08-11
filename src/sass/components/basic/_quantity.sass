@@ -1,0 +1,41 @@
+.quantity
+  width: 88px
+  height: 40px
+  display: flex
+  border: 1px solid $black
+
+  &__btn
+    flex: 0 0 30px
+    position: relative
+    cursor: pointer
+    // это для плюсаи минуса через псевлокласс.
+    // можно удалить и заменить фон.иконкой
+    &::before,
+    &::after
+      content: ''
+      position: absolute
+      top: 50%
+      left: 50%
+      transition: all 0.3s ease
+      margin-left: -4.5px
+      background-color: #a6a6a6
+      width: 9px
+      height: 1px
+    @media (any-hover: hover)
+      &:hover
+        &::before,
+        &::after
+          background-color: rgba($black, 0.5)
+    &_plus
+      &::before
+        transform: rotate(-90deg)
+    &_minus
+
+  &__input
+    flex: 1 1 auto
+    input
+      height: 100%
+      color: $black
+      font-size: 12px
+      width: 100%
+      text-align: center

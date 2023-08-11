@@ -1,0 +1,43 @@
+.checkbox
+  position: relative
+  &__input
+    position: absolute
+    width: 0
+    height: 0
+    opacity: 0
+    visibility: hidden
+    &:checked + .checkbox__text:before
+      background: $white url("../icons/sprite.svg#check") center no-repeat
+
+  &__text
+    display: inline-flex
+    align-items: center
+    position: relative
+    font-size: 16px
+    color: $text
+    letter-spacing: -0.3px
+    line-height: 1.25
+    cursor: pointer
+    &::before
+      content: ''
+      align-self: flex-start
+      margin-right: 14px
+      flex: 0 0 20px
+      top: 0
+      left: 0
+      width: 20px
+      height: 20px
+      background-color: $white
+      border: 1px solid $black
+
+  a
+    color: $white
+    text-decoration: underline
+    @include mediaTablet
+      &:hover
+        text-decoration: none
+  &.error
+    & .checkbox__text:before
+      border: 1px solid #ee1212
+
+

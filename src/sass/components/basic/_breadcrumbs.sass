@@ -1,0 +1,37 @@
+.breadcrumbs
+  padding-top: 20px
+  padding-bottom: 12px
+  background-color: $bgc
+  overflow: auto
+  height: 50px
+
+  // .breadcrumbs__list
+  &__list
+    display: flex
+    align-items: center
+    position: relative
+    white-space: nowrap
+
+  // .breadcrumbs__item
+  &__item
+    color: rgba($black, 0.5)
+    & a
+      position: relative
+      color: inherit
+      transition: color 0.3s ease-in
+      &::before
+        content: ' / '
+        position: absolute
+        top: 2px
+        right: -11px
+        color: rgba($black, 0.5)
+    & span
+      color: $black
+    &:not(:last-child)
+      margin-right: 20px
+    @media (any-hover: hover)
+      &:hover a
+        color: $black
+
+
+
