@@ -1,20 +1,19 @@
 $bgc: #FFFFFF
 $white: #FFFFFF
-$black: #354053
+$black: #000
 $text: rgba(0, 0, 0, 0.7)
 // добавлять и удалять
 $grey: #F6F6F6
 $red: #ED2228
-
-// добавлять и удалять
-$gradient-dark: linear-gradient(180deg, #002535 0%, transparent 100%) #003851
+$blue: #004767
+$gradient: linear-gradient(104deg, #004767 0%, transparent 100%) #003B55
 
 // анимация
 $cubic: all 0.7s cubic-bezier(0.76, -0.76, 0.25, 1.26)
 
 // переменные по умолчанию
 $containerPadding: 15
-$contentWidth: 1240
+$contentWidth: 1360
 $containerWidth: $contentWidth + $containerPadding * 2
 $minWidth: 320
 
@@ -29,11 +28,11 @@ $mobileSmall: 479.98px // Телефоны S - 480px
   --widthscrollbar: 17px
 
 %body
-  font-family: 'Roboto', sans-serif
-  @include font(400, 18, 22)
+  font-family: 'Manrope', sans-serif
+  @include font(500, 16, 18)
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
 
 %head
-  font-family: 'Roboto', sans-serif
-  @include font(700, 42, 72)
+  font-family: 'Manrope', sans-serif
+  @include font(700, 36, 43)
