@@ -1,3 +1,4 @@
+// import * as extSass from "sass"; // раскоментировать в случае ошибки
 import extSass from "sass";
 import gulpSass from "gulp-sass";
 import rename from "gulp-rename";

@@ -1,5 +1,7 @@
+// https://swiperjs.com/swiper-api
+
 import _vars from "../_vars.js";
-import Swiper, { Navigation, Pagination } from "swiper";
+import Swiper, { Navigation, Pagination, Autoplay, EffectFade, Parallax } from "swiper";
 
 Swiper.use([Pagination, Navigation]);
 
