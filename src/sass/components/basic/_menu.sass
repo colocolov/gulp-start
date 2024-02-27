@@ -15,6 +15,8 @@
       background-color: rgba($text, 0.9) // ---------- ЦВЕТ ФОНА У МЕНЮ
       overflow: auto
       transition: right 0.5s ease 0s
+      z-index: 2
+      justify-content: flex-end
       // подложка под верхнее меню, если оно имеет фон
       &::before
         content: ''
@@ -35,7 +37,8 @@
     flex-wrap: wrap
     @media (max-width: 768px)
       flex-direction: column
-      align-items: flex-start
+      align-items: flex-end
+      justify-content: flex-start
 
   &__item
     position: relative
@@ -177,3 +180,6 @@
           top: calc( 50% - 2px )
           transform: rotate(45deg)
           transition: transform .3s ease-in-out, top .3s ease-in-out
+
+// МЕНЮ ДЛЯ ЯЗЫКОВ
+// @import 'language-menu'

@@ -1,0 +1,41 @@
+.contacts
+
+  &__mes
+    color: $black
+    margin-right: 35px
+    width: 45.588235% // 620/1360
+  &__top
+    display: flex
+    justify-content: space-between
+    width: 100%
+    gap: 40px
+  &__line
+    border-bottom: 1px solid $black
+    flex: 1 1 48%
+    height: 34px
+  &__input
+    background-color: transparent
+    height: 34px
+    width: 100%
+    &::placeholder
+      // font-family: 'Montserrat'
+      color: rgba($black, 0.6)
+      transition: color 0.3s ease
+      &:focus
+        border: 1px solid $black
+
+
+
+.wpcf7-form
+  display: flex
+  flex-direction: column
+.wpcf7 .wpcf7-response-output
+  margin-right: 0 !important
+  margin-left: 0 !important
+  padding: 17px !important
+  font-size: 16px
+  order: 1
+.wpcf7-not-valid-tip
+  font-weight: 600
+  position: relative
+  bottom: 6px

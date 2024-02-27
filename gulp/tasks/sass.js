@@ -2,6 +2,7 @@
 import extSass from "sass";
 import gulpSass from "gulp-sass";
 import rename from "gulp-rename";
+import sourcemaps from "gulp-sourcemaps";
 
 import cleanCss from "gulp-clean-css"; // Сжатие CSS файла
 //import webpCss from "gulp-webpcss"; // Вывод WEBP изображения
@@ -13,7 +14,8 @@ const sassGulp = gulpSass(extSass);
 export const sass = () => {
   return (
     app.gulp
-      .src(app.path.src.sass, { sourcemaps: app.isDev })
+      .src(app.path.src.sass, {})
+      .pipe(app.plugins.if(sourcemaps.init()))
       .pipe(
         app.plugins.plumber(
           app.plugins.notify.onError({
@@ -46,6 +48,7 @@ export const sass = () => {
           extname: ".min.css",
         })
       )
+      .pipe(app.plugins.if(sourcemaps.write()))
       .pipe(app.gulp.dest(app.path.build.css))
       .pipe(app.plugins.browserSync.stream())
   );

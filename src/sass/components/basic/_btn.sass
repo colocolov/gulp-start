@@ -6,7 +6,7 @@
   outline: none
 
 .btn
-  align-self: center // если кнпка находится во flex-контейнере и нужно выровнять ее по середине
+  // align-self: center // если кнпка находится во flex-контейнере и нужно выровнять ее по середине
   display: inline-block
   background: $bgc
   border-radius: 20px
@@ -16,16 +16,18 @@
   @include font(700, 16, 2)
   text-align: center
   text-transform: uppercase
-  transition: background 0.5s ease-in-out, color 0.5s ease-in-out
+  transition: background 0.5s ease-in-out, color 0.5s ease-in-out, transform 0.3s ease
   &:focus
     outline: none
     // background: $gradient-dark
     // color: $white
-  &:active
+  &:active // НАЖАТИЕ
+    transform: translateY(-2px)
     // background: $red-tab
     // color: $white
-  @media (max-width: 992px)
+  @media (any-hover: hover)
     &:hover
+      transform: translateY(-4px)
       background-color: transparent
       color: $white
 
