@@ -15,7 +15,7 @@ export const sass = () => {
   return (
     app.gulp
       .src(app.path.src.sass, {})
-      .pipe(app.plugins.if(sourcemaps.init()))
+      .pipe(sourcemaps.init())
       .pipe(
         app.plugins.plumber(
           app.plugins.notify.onError({
@@ -48,7 +48,7 @@ export const sass = () => {
           extname: ".min.css",
         })
       )
-      .pipe(app.plugins.if(sourcemaps.write()))
+      .pipe(sourcemaps.write())
       .pipe(app.gulp.dest(app.path.build.css))
       .pipe(app.plugins.browserSync.stream())
   );
