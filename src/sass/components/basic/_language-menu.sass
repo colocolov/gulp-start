@@ -1,0 +1,107 @@
+.language-menu
+  z-index: 99
+  margin-left: 30px
+  @include mediaPhone
+    margin-left: auto
+    // margin-bottom: 40px
+    position: relative
+    top: -20px
+    display: none
+    // transform: translateX(-1000%)
+  &._active
+    // transform: translateX(0)
+    display: block
+
+.language-menu > ul
+  // display: inline-block
+  position: relative
+  pointer-events: auto
+  display: flex
+  align-items: center
+  & li ul li
+    width: 100%
+    border-top: 1px solid rgba(0, 0, 0, 0.2)
+    @include mediaPhone
+      border: none
+
+.language-menu > ul > li
+  display: flex
+  align-items: center
+  width: auto
+  flex-wrap: nowrap
+  // position: relative
+
+.language-menu > ul > li > ul
+  @include mediaPhone
+    opacity: 1
+    top: 0
+    width: auto
+    max-height: min-content
+    display: flex
+    align-items: center
+    background-color: $blue
+
+.language-menu > ul > li a
+  display: block
+  // padding: 20px
+  transition: background-color 0.3s ease
+  @include mediaPhone
+    padding: 0
+    width: auto
+  @media (any-hover: hover)
+    &:hover
+      background-color: lighten($blue, 3)
+
+
+.language-menu > ul > li:hover ~ a
+  text-decoration: underline
+
+.menu-item-language
+  @include mediaPhone
+    display: flex
+    align-items: center
+
+.language-dropdown
+  background-color: $blue
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3)
+  display: none
+  right: 0
+  // left: 0
+  // min-width: 120px
+  // padding: 5px 20px
+  position: absolute
+  // top: 2px
+  z-index: 100
+  // left: -27px
+  @include mediaPhone
+    display: flex
+    position: relative
+    top: 0
+    left: 0
+    background-color: transparent
+    z-index: 10
+    box-shadow: none
+
+.language-dropdown a
+  color: $white
+  display: block
+  font-size: 14px
+  line-height: 1.5em
+  padding: 10px
+  text-transform: capitalize
+  @include mediaPhone
+    padding: 6px 0
+    font-size: 16px
+    color: $white
+
+@media ( min-width: 768px  )
+  .language-menu > ul > li:hover .language-dropdown
+    display: block
+  .language-dropdown a
+    // display: block
+    padding: 8px 25px !important
+    cursor: pointer
+  .language-dropdown li:hover
+    background-color: $blue
+  .language-dropdown li:hover a
+    color: $white !important
