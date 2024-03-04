@@ -60,6 +60,10 @@
       height: 2px
       background-color: $white
       transition: width 0.5s ease
+    @media (any-hover: hover)
+      &:hover
+        &::before
+          width: 100%
     // уточнить!!!
     // &:last-child a
     //   transition: 0.3s linear
