@@ -1,9 +1,14 @@
 .breadcrumbs
-  padding-top: 20px
-  padding-bottom: 12px
+  // padding-top: 20px
+  // padding-bottom: 12px
+  display: flex
+  align-items: center
+  height: 50px
   background-color: $bgc
   overflow: auto
-  height: 50px
+
+  &__container
+    width: 100%
 
   // .breadcrumbs__list
   &__list
@@ -14,10 +19,10 @@
 
   // .breadcrumbs__item
   &__item
-    color: rgba($black, 0.5)
+    color: $black
     & a
       position: relative
-      color: inherit
+      color: rgba($black, 0.5)
       transition: color 0.3s ease-in
       &::before
         content: ' / '
