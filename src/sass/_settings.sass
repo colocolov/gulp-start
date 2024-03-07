@@ -51,9 +51,35 @@ input
   flex: 0 0 auto
 
 [class*='__container']
-  max-width: $containerWidth + px
   margin: 0 auto
   padding: 0 $containerPadding + px
+  max-width: $containerWidth + px
+  width: 100%
+
+.container
+  &-full
+    padding: 0 $containerPadding + px
+    max-width: 100%
+  &-left50
+    padding: 0 $containerPadding + px
+    max-width: 50%
+    @include mediaPhone
+      max-width: 100%
+  &-right50
+    padding: 0 $containerPadding + px
+    max-width: 50%
+    margin-left: auto
+    @include mediaPhone
+      max-width: 100%
+  &-left
+    //padding-right: calc( (100% - $containerWidth) / 2 + $containerPadding )
+    @include mediaDesk
+      padding-right: $containerPadding + px
+  &-right
+    //padding-left: calc( (100% - ($containerWidth + px)) / 2 + ($containerPadding + px) )
+    @include mediaDesk
+      padding-left: $containerPadding + px
+  //&-
 
 ._ibg
   position: relative

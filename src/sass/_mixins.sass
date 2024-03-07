@@ -44,11 +44,11 @@
 
 // media запросы
 @mixin mediaDesk
-  @media screen and (max-width: $desktop)
+  @media (max-width: $desktop)
     @content
 
 @mixin mediaNotebook
-  @media screen and (max-width: $pc)
+  @media (max-width: $pc)
     @content
 
 @mixin mediaTablet

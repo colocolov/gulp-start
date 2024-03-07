@@ -1,7 +1,7 @@
 // Основной модуль
 import gulp from "gulp";
 // Импорт путей
-import { path } from "./gulp/config/path.js";
+import { path, projectName } from "./gulp/config/path.js";
 // Импорт общих плагинов
 import { plugins } from "./gulp/config/plugins.js";
 
@@ -9,6 +9,7 @@ global.app = {
   isBuild: process.argv.includes("--build"),
   isDev: !process.argv.includes("--build"),
   path: path,
+  projectName: projectName,
   gulp: gulp,
   plugins: plugins,
 };

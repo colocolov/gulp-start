@@ -1,6 +1,7 @@
 // Получаем имя папки проекта
 import * as nodePath from "path";
 const rootFolder = nodePath.basename(nodePath.resolve());
+export const projectName = rootFolder;
 
 const buildFolder = `./${rootFolder}`;
 // const buildFolder = `./dist`;

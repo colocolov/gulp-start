@@ -15,6 +15,9 @@ export const favicon = () => {
       )
       .pipe(app.gulp.dest(app.path.build.favicon))
       .pipe(favicons({
+        appName: app.projectName,
+        appShortName: app.projectName,
+        appDescription: `This is favicon for ${app.projectName}`,
         icons: {
           favicons: true,
           appleIcon: true,
