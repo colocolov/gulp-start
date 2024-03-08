@@ -1,11 +1,307 @@
 {
+  "svg": {
+		"scope": "html",
+    "prefix": "svg",
+    "body": ["<svg class=\"$1\" aria-hidden=\"true\">", "  <use xlink:href=\"images/icons/sprite.svg#$2\"></use>", "</svg>"],
+    "description": "include svg"
+  },
+  "img": {
+		"scope": "html",
+    "prefix": "img",
+    "body": ["<div class=\"${1}__img _ibg\">","  <img src=\"@img/${2}\" loading=\"lazy\" width=\"\" height=\"\" alt=\"\">","</div>"],
+    "description": "img tag"
+  },
+  "img2x": {
+		"scope": "html",
+    "prefix": "img2x",
+    "body": ["<div class=\"${1}__img _ibg\">","  <img src=\"@img/${2}.jpg\" srcset=\"@img/${2}@2x.jpg 2x\" loading=\"lazy\" width=\"\" height=\"\" alt=\"\">","</div>"],
+    "description": "img tag for retina"
+  },
+	"picture": {
+		"scope": "html",
+    "prefix": "picture",
+    "body": [
+      "<picture>",
+      "  <source srcset=\"${1}\" media=\"(max-width: 768px)\" />",
+      "  <img src=\"${2}\" width=\"\" height=\"\" alt=\"\">",
+      "</picture>",
+    ],
+    "description": "tag picture with scrset"
+  },
+  "head": {
+		"scope": "html",
+    "prefix": "head",
+    "body": ["<h${1} class=\"heading ${2}__head\">${3}</h${1}>"],
+    "description": "head h1-h6 title"
+  },
+  "d": {
+		"scope": "html",
+    "prefix": "d",
+    "body": ["<div class=\"${1}\">${2}</div>"],
+    "description": "div with class"
+  },
+  "sec": {
+		"scope": "html",
+    "prefix": "sec",
+    "body": ["<section class=\"${1}\">", "  <div class=\"${1}__container\">${2}</div><!-- /.${1}__container -->", "</section><!-- /.${1} -->"],
+    "description": "first creat section"
+  },
+  "button": {
+		"scope": "html",
+    "prefix": "btn",
+    "body": ["<a href=\"#\" class=\"btn-reset btn btn--${1}\">${2}</a>"],
+    "description": "button default"
+  },
+  "checkbox": {
+		"scope": "html",
+    "prefix": "check",
+    "body": [
+      "<label class=\"checkbox\">",
+      "  <input data-error=\"Ошибка\" class=\"checkbox__input\" type=\"checkbox\" value=\"1\" name=\"\">",
+      "  <span class=\"checkbox__text\"></span>",
+      "</label>"],
+    "description": "custom checkbox"
+  },
+  "menu": {
+		"scope": "html",
+    "prefix": "menu",
+    "body": [
+      "<div class=\"header__menu menu\">",
+      "  <nav class=\"menu__body\" title=\"Main navigation\">",
+      "    <ul class=\"menu__list\">",
+      "      <li class=\"menu__item\"><a class=\"menu__link\" href=\"\">Home</a></li>",
+      "      <li class=\"menu__item\"><a class=\"menu__link\" href=\"\"></a></li>",
+      "      <li class=\"menu__item\"><a class=\"menu__link\" href=\"\">Contacs</a></li>",
+      "    </ul>",
+      "  </nav>",
+      "  <button type=\"button\" aria-label=\"Открыть меню\" aria-expanded=\"false\" class=\"menu__icon\">",
+      "    <span></span>",
+      "    <span></span>",
+      "    <span></span>",
+      "  </button>",
+      "</div>"
+    ],
+    "description": "include mobile menu"
+  },
+  "socials": {
+		"scope": "html",
+    "prefix": "menusoc",
+    "body": [
+      "<ul class=\"${1}__social social\">",
+      "  <li class=\"social__item\">",
+      "    <div class=\"social__icon\">",
+      "      <svg aria-hidden=\"true\">",
+      "        <use xlink:href=\"images/icons/sprite.svg#${2}\"></use>",
+      "      </svg>",
+      "    </div>",
+      "    <a class=\"social__link\" href=\"\">${3}</a>",
+      "  </li>",
+      "  <li class=\"social__item\">",
+      "    <div class=\"social__icon\">",
+      "      <svg aria-hidden=\"true\">",
+      "        <use xlink:href=\"images/icons/sprite.svg#\"></use>",
+      "      </svg>",
+      "    </div>",
+      "    <a class=\"social__link\" href=\"\"></a>",
+      "  </li>",
+      "</ul>",
+    ],
+    "description": "include social menu"
+  },
+  "php": {
+    "scope": "html, php",
+    "prefix": "php",
+    "body": ["<?php $1 ?>"],
+    "description": "php tag"
+  },
+  "slider": {
+    "scope": "html, php",
+    "prefix": "swiper",
+    "body": [
+      "<div class=\"swiper $1__slider\">",
+      "  <div class=\"swiper-wrapper $1__slider-wrap\">",
+      "    <div class=\"swiper-slide $1__slide\">",
+      "      $2",
+      "    </div><!-- /.slide -->",
+      "  </div><!-- /.swiper-wrapper -->",
+      "",
+      "  <div class=\"navigation $1__navigation\">",
+      "    <div class=\"navigation__btn navigation__btn-prev $1--prev\">",
+      "      <svg class=\"navigation__btn-svg\" aria-hidden=\"true\">",
+      "        <use xlink:href=\"images/icons/sprite.svg#arrcircle\"></use>",
+      "      </svg>",
+      "    </div><!-- /.arrow-prev -->",
+      "    <div class=\"navigation__btn navigation__btn-next $1--next\">",
+      "      <svg class=\"navigation__btn-svg\" aria-hidden=\"true\">",
+      "        <use xlink:href=\"images/icons/sprite.svg#arrcircle\"></use>",
+      "      </svg>",
+      "    </div><!-- /.arrow-next -->",
+      "  </div><!-- /.pagination__nav -->",
+      "",
+      "</div><!-- /.swipper -->"
+    ],
+    "description": "slider swiper"
+  },
 
-	"Print to console": {
-		"scope": "javascript,typescript",
-		"prefix": "log",
-		"body": ["console.log('$1');", "$2"],
-		"description": "Log output to console"
-	},
+	"cl": {
+		"scope": "javascript",
+    "prefix": "cl",
+    "body": ["console.log(\"${1}\");"],
+    "description": "conlose log data"
+  },
+  "document.querySelector": {
+    "scope": "javascript",
+    "prefix": "dqs",
+    "body": ["const ${1} = document.querySelector('${1}');"],
+    "description": "document.querySelector"
+  },
 
+	"not-last-child": {
+    "prefix": "nlc",
+    "body": ["&:not(:last-child)", "  $1"],
+    "description": "not-last-child"
+  },
+  "after": {
+    "prefix": "aft",
+    "body": ["&::after", "  $1"],
+		"description": "::after"
+  },
+  "before": {
+    "prefix": "bef",
+    "body": ["&::before",
+      "  content: ''",
+      "  position: absolute", 
+      "  top: ${1}",
+      "  left: ${2}",
+      "  width: ${3}px",
+      "  height: ${4}px",
+    ],
+		"description": "::before"
+  },
+  "z-index": {
+    "prefix": "zi",
+    "body": ["z-index: ${1}"],
+		"description": "z-index"
+  },
+  "&": {
+    "prefix": "&",
+    "body": ["&__$1"],
+		"description": "include &__"
+  },
+  "font style": {
+    "prefix": "fo",
+    "body": ["@include font(${1}, ${2}, ${3})"],
+		"description": "font weight, font size, line-height"
+  },
+  "transition": {
+    "prefix": "trs",
+    "body": ["transition: ${1} 0.3s ease-in"],
+		"description": "transition"
+  },
+  "border": {
+    "prefix": "bd",
+    "body": ["border: ${1}px solid $${2}"],
+		"description": "border around"
+  },
+  "background-image": {
+    "prefix": "bgi",
+    "body": ["background: $${1} url(\"../images/${2}\") center / cover no-repeat"],
+		"description": "background-image with all atributes"
+  },
+  "any-hover": {
+    "prefix": "hov",
+    "body": [
+      "@media (any-hover: hover)",
+      "  &:hover", 
+      "    ${1}"],
+		"description": "any-hover"
+  },
+  "position-absolute": {
+    "prefix": "psa",
+    "body": [
+      "content: ''",
+      "position: absolute", 
+      "top: ${1}",
+      "left: ${2}",
+      "width: ${3}px",
+      "height: ${4}px",
+    ],
+    "description": "Position aboslute"
+  },
+  "position-absolute-img": {
+    "prefix": "psaimg",
+    "body": [
+      "content: ''",
+      "position: absolute", 
+      "top: ${1}",
+      "left: ${2}",
+      "width: ${3}px",
+      "height: ${4}px",
+      "background-image: url(\"@img/${5}\")",
+      "background-repeat: no-repeat",
+    ],
+    "description": "Position aboslute for image"
+  },
+  "media max": {
+    "prefix": "mma",
+    "body": [
+      "@media (max-width: $1px)",
+      "  ${2}"],
+		"description": "media max-width"
+  },
+  "media min": {
+    "prefix": "mmi",
+    "body": [
+      "@media (min-width: $1px)",
+      "  ${2}"],
+		"description": "media min-width"
+  },
+  "media descktop": {
+    "prefix": "desktop",
+    "body": [
+      "@include mediaDesk",
+      "  ${1}" ],
+		"description": "media descktop"
+  },
+  "media notebook -- 1024px": {
+    "prefix": "pc",
+    "body": [
+      "@include mediaNotebook",
+      "  ${1}" ],
+		"description": "media notebook -- 1024px"
+  },
+  "media tablet -- 992px": {
+    "prefix": "tablet",
+    "body": [
+      "@include mediaTablet",
+      "  ${1}" ],
+		"description": "media tablet -- 992px"
+  },
+  "media phone -- 768px": {
+    "prefix": "mob",
+    "body": [
+      "@include mediaPhone",
+      "  ${1}" ],
+		"description": "media phone -- 768px"
+  },
+  "media phone mid -- 576px": {
+    "prefix": "mobMid",
+    "body": [
+      "@include mediaPhoneMid",
+      "  ${1}" ],
+		"description": "media phone mid -- 576px"
+  },
+  "media phone small -- 480px": {
+    "prefix": "mobSm",
+    "body": [
+      "@include mediaPhoneSm",
+      "  ${1}" ],
+		"description": "media phone small -- 480px"
+  },
+  "adaptive value": {
+    "prefix": "adap",
+    "body": ["@include adaptiveValue('${1}', , )"],
+		"description": "adaptive value"
+  },
 	
 }
