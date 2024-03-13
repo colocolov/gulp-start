@@ -1,6 +1,7 @@
 <div class="contact__wrap">
 
   <form action="#" class="wpcf7-form">
+    <p class="contact__text">Заполните форму и мы свяжемся с вами для консультации</p>
     <div class="contact__form">
       <div class="contact__line">
         <input id="name" class="contact__input" type="text" placeholder="Name">
@@ -10,12 +11,16 @@
       </div>
       <div class="contact__text">
         <textarea id="message" class="contact__textarea" name="text" placeholder="Message"></textarea>
-        <input class="wpcf7-form-control has-spinner wpcf7-submit contact__send contact__send" type="submit" value="">
         <!-- <button class="contact__send"><svg class="" aria-hidden="true">
-        <use xlink:href="images/icons/sprite.svg#send"></use>
-            </svg></button> -->
+          <use xlink:href="images/icons/sprite.svg#send"></use>
+        </svg></button> -->
       </div>
     </div>
+    <!-- /.contact__form -->
+    <p>
+      <input class="wpcf7-form-control has-spinner wpcf7-submit btn--send contact__send" type="submit"
+             value="Отправить">
+    </p>
   </form>
 
 </div>

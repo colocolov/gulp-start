@@ -1,4 +1,4 @@
-.contacts
+.contact
 
   &__mes
     color: $black
@@ -17,12 +17,29 @@
     background-color: transparent
     height: 34px
     width: 100%
+    transition: border 0.3s ease-in
     &::placeholder
       // font-family: 'Montserrat'
       color: rgba($black, 0.6)
       transition: color 0.3s ease
-      &:focus
-        border: 1px solid $black
+    &:focus
+      border: 1px solid $black
+
+  &__text
+    height: 200px
+  &__textarea
+    color: rgba($black, 0.6)
+    width: 100%
+    height: 100%
+    padding: 10px
+    background-color: transparent
+    transition: border 0.3s ease-in
+    outline: none
+    resize: none
+    &::placeholder
+      transform: translateY(157px)
+    &:focus
+      border: 1px solid $black
 
 
 
