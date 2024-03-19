@@ -64,7 +64,7 @@
       transition: background-color 0.3s ease
       @media (any-hover: hover)
       &:hover
-        background-color: lighten($blue, 3)
+        background-color: lighten($black, 3)
         &:last-child a
           color: $white
       @include mediaNotebook
@@ -75,12 +75,12 @@
         padding: 10px 20px
         margin-bottom: 0
     & li.current-menu-item a
-      background-color: lighten($blue, 3)
+      background-color: lighten($black, 3)
     & li ul
       position: absolute
       left: 0
       width: auto
-      background-color: lighten($blue, 1)
+      background-color: lighten($black, 1)
       z-index: 50
       //display: none
 
@@ -102,7 +102,7 @@
       transition: top 0.3s
       @include mediaPhone
         top: 0
-        background-color: lighten($blue, 3)
+        background-color: lighten($black, 3)
     & li ul li
       width: 100%
       border-top: 1px solid rgba(0, 0, 0, 0.2)
@@ -356,7 +356,7 @@
     max-height: min-content
     display: flex
     align-items: center
-    background-color: $blue
+    background-color: $black
 
 .language-menu > ul > li a
   display: block
@@ -367,7 +367,7 @@
     width: auto
   @media (any-hover: hover)
     &:hover
-      background-color: lighten($blue, 3)
+      background-color: lighten($black, 3)
 
 
 .language-menu > ul > li:hover ~ a
@@ -379,7 +379,7 @@
     align-items: center
 
 .language-dropdown
-  background-color: $blue
+  background-color: $black
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3)
   display: none
   right: 0
@@ -420,6 +420,6 @@
     padding: 8px 25px !important
     cursor: pointer
   .language-dropdown li:hover
-    background-color: $blue
+    background-color: $black
   .language-dropdown li:hover a
     color: $white !important

@@ -1,4 +1,5 @@
 import svgSprit from "gulp-svg-sprite";
+import svgO from "gulp-svgo";
 
 export const svgSprite = () => {
   return app.gulp
@@ -10,11 +11,17 @@ export const svgSprite = () => {
           message: "Error: <%= error.message %>",
         })
       )
-    )
+  )
+    .pipe(svgO({
+      plugins: [{
+        removeAttrs: { attrs: "(fill|stroke|style|width|height|data.*)" }
+      }]
+    }))
     .pipe(
       svgSprit({
         mode: {
-          stack: {
+          symbol: {
+            // stack: {
             sprite: `../icons/sprite.svg`,
             //example: true,
           },
