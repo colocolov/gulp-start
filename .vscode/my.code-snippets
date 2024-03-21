@@ -1,9 +1,9 @@
 {
-  "svg": {
+  "svg with hover": {
 		"scope": "html",
     "prefix": "svg",
-    "body": ["<svg class=\"$1\" aria-hidden=\"true\">", "  <use xlink:href=\"images/icons/sprite.svg#$2\"></use>", "</svg>"],
-    "description": "include svg"
+    "body": ["<svg class=\"icon-svg $1__svg\" aria-hidden=\"true\">", "  <use xlink:href=\"images/icons/sprite.svg#$2\"></use>", "</svg>"],
+    "description": "include svg with hover"
   },
   "img": {
 		"scope": "html",
@@ -17,16 +17,24 @@
     "body": ["<div class=\"${1}__img _ibg\">","  <img src=\"@img/${2}.jpg\" srcset=\"@img/${2}@2x.jpg 2x\" loading=\"lazy\" width=\"\" height=\"\" alt=\"\">","</div>"],
     "description": "img tag for retina"
   },
-	"picture": {
+	"picture mob and desk": {
 		"scope": "html",
     "prefix": "picture",
     "body": [
       "<picture>",
-      "  <source srcset=\"${1}\" media=\"(max-width: 768px)\" />",
-      "  <img src=\"${2}\" width=\"\" height=\"\" alt=\"\">",
+      "  <!-- / изображение на мобилках -->",
+      "  <source srcset=\"${1}\" media=\"(max-width: 768px)\" >",
+      "  <!-- / изображение на декстопе -->",
+      "  <img src=\"${2}\" loading\"lazy\" width=\"\" height=\"\" alt=\"\">",
       "</picture>",
     ],
-    "description": "tag picture with scrset"
+    "description": "tag picture with scrset and comments"
+  },
+    "vbg": {
+		"scope": "html",
+    "prefix": "video on bg",
+    "body": ["<div class=\"${1}__clip _vbg\">","  <video src=\"resources/video/main_video.mp4\" playsinline muted autoplay loop class=\"${1}__video\"></video>","</div>"],
+    "description": "video on background"
   },
   "head": {
 		"scope": "html",
@@ -51,6 +59,12 @@
     "prefix": "btn",
     "body": ["<a href=\"#\" class=\"btn-reset btn btn--${1}\">${2}</a>"],
     "description": "button default"
+  },
+  "hide block": {
+		"scope": "html",
+    "prefix": "hide",
+    "body": ["<div class=\"unvisible\">${2}</div>"],
+    "description": "hide block"
   },
   "checkbox": {
 		"scope": "html",
@@ -256,7 +270,7 @@
       "  ${2}"],
 		"description": "media min-width"
   },
-  "media descktop": {
+  "media descktop -- 1280px": {
     "prefix": "desktop",
     "body": [
       "@include mediaDesk",

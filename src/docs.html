@@ -9,113 +9,29 @@
     <main class="main">
 
       <div class="hello__container">
-        <h1>Документация</h1>
-        <p>Документация и возможности сборки и стартового шаблона</p>
-        <p>Запуск в режиме разработки: <code class="code">gulp</code><br>
-        <p>Сборка оптимизированной версии для продакшена: <code class="code">gulp build</code></p>
-        <p>Запуск конвертации шрифтов: <code class="code">gulp fonts</code></p>
-        <p>Запуск создания svg-spirite: <code class="code">gulp svg</code></p>
-        <p>Запуск создания favicon: <code class="code">gulp favicon</code></p>
-
-        <h2>Возможности стартового шаблона</h2>
-        Готовые стили для CSS контейнеров разного типа.<br>
-        Миксины и сниппеты для адаптива.<br>
-
-        <h2>Возможности сборки</h2>
-        Автоисправление путей для изображений.<br>
-        Автоматическая генерация SVG спрайтов.<br>
-        Автоматическое конвертирование шрифтов.<br>
-
-        <h2>Особенности сборки для продакшена gulp build</h2>
-        Автоматическое сжатие jpg изображений<br>
-        Автоматическая генерация webp графики и указания webp формата в HTML.<br>
+        @include('html/docs/_intro.html')
       </div>
 
-
-      <div class="hello__container">
+      <div class="hello__container" id="container">
         <h2>Примеры контейнеров</h2>
       </div>
-      <div class="container-full mb20">
-        Контейнер на всю ширину <code class="code">.container-full</code>
-        <div class="example">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident vitae nihil nostrum expedita quibusdam
-          quis officia commodi fugit, enim sequi esse consectetur ex quos nemo.
-        </div>
-      </div>
-      <div class="container-left50 mb20">
-        Контейнер слева на 50% <code class="code">.container-full</code>
-        <div class="example">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident vitae nihil nostrum expedita quibusdam
-          quis officia commodi fugit, enim sequi esse consectetur ex quos nemo.
-        </div>
-      </div>
-      <div class="container-right50 mb20">
-        Контейнер справа на 50% <code class="code">.container-full</code>
-        <div class="example">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident vitae nihil nostrum expedita quibusdam
-          quis officia commodi fugit, enim sequi esse consectetur ex quos nemo.
-        </div>
-      </div>
-      <div class="container-left mb20">
-        Контейнер влево <code class="code">.container-left</code> (см. код в шаблоне)
-        <div class="example">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident vitae nihil nostrum expedita quibusdam
-          quis officia commodi fugit, enim sequi esse consectetur ex quos nemo.
-        </div>
-      </div>
-      <div class="container-right mb20">
-        Контейнер вправо <code class="code">.container-right</code> (см. код в шаблоне)
-        <div class="example">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident vitae nihil nostrum expedita quibusdam
-          quis officia commodi fugit, enim sequi esse consectetur ex quos nemo.
-        </div>
-      </div>
+      @include('html/docs/_containers.html')
 
-
-      <div class="hello__container">
+      <div class="hello__container" id="svg">
         <h2>Примеры svgSprite</h2>
-        <p>Иконки размещаем в папку: <code class="code">src/images/icons</code></p>
-
-        Готовый файл со спрайтом собирается в: <code class="code">папка_проекта/images/icons/sprite.svg</code>
-        <br>
-        <svg class="icon-svg icon-svg--inst" aria-hidden="true">
-          <use xlink:href="images/icons/sprite.svg#instagram"></use>
-        </svg>
-        &nbsp;&nbsp;&nbsp;
-        <svg class="icon-svg icon-svg--fb" aria-hidden="true">
-          <use xlink:href="images/icons/sprite.svg#facebook"></use>
-        </svg>
-        <br>
-        <p>HTML код</p>
-        <code class="code">
-            &lt;svg class="icon"&gt; <br>
-            &nbsp;&nbsp;&nbsp;&lt;use href="images/icons/sprite.svg#instagram"&gt;&lt;/use&gt;<br>
-            &nbsp;&lt;/svg&gt;
-          </code>
-        <p>CSS код</p>
-        <code class="code">
-          .icon-svg {<br>
-          &nbsp;&nbsp;&nbsp;fill: transparent;<br>
-          &nbsp;&nbsp;&nbsp;stroke: transparent;<br>
-          &nbsp;&nbsp;&nbsp;width: 40px<br>
-          &nbsp;&nbsp;&nbsp;height: 40px<br>
-          &nbsp;&nbsp;&nbsp;transition: fill 0.3s ease-in<br>
-          }<br>
-        </code>
-
+        @include('html/docs/_svg.html')
       </div>
 
-
-      <div class="hello__container">
+      <div class="hello__container" id="hotkeys">
         <h2>Горячие клавиши и миксины</h2>
         @include('html/docs/_hotkeys.html')
       </div>
-
 
     </main>
 
     @include('html/footer.html')
   </div><!-- /.wrapper -->
 </body>
+
 
 </html>
