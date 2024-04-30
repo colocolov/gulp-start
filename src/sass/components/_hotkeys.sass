@@ -1,20 +1,27 @@
-.hello__container
-  padding-top: 40px
-  font-size: 16px
-  margin-bottom: 30px
-  h1
-    font-size: 32px
-    font-weight: 700
-    margin-bottom: 10px
-  h2
-    font-size: 26px
-    font-weight: 700
-    margin-bottom: 5px
-    margin-top: 30px
-  h3
-    font-size: 22px
-  a
-    text-decoration: underline
+.hello
+  &__container
+    padding-top: 40px
+    font-size: 16px
+    margin-bottom: 30px
+    h1
+      font-size: 32px
+      font-weight: 700
+      margin-bottom: 10px
+    h2
+      font-size: 26px
+      font-weight: 700
+      margin-bottom: 5px
+      margin-top: 30px
+    h3
+      font-weight: 700
+      margin-bottom: 5px
+      margin-top: 30px
+      font-size: 22px
+    a
+      text-decoration: underline
+  &__subtext
+    font-size: 13px
+    font-style: italic
 
 .icon-svg
   fill: transparent
@@ -36,9 +43,18 @@
   margin-top: 7px
   font-size: 16px
 .code
-  background-color: darken($grey, 5)
-  padding: 0 7px
-  color: $red
+  background-color: darken($grey, 3)
+  padding: 2px 7px
+  color: darken($red, 10)
+  border-radius: 3px
+.code-full
+  background-color: darken($grey, 3)
+  padding: 17px
+  color: darken($red, 10)
+  border-radius: 5px
+  display: inline-block
+  margin: 5px 0
+
 .mb20
   margin-bottom: 20px
 
