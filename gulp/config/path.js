@@ -36,7 +36,12 @@ export const path = {
     images: `${srcFolder}/images/**/*.{jpg,jpeg,png,gif,webp,svg,ico}`,
     files: `${srcFolder}/files/**/*.*`,
   },
-  clean: buildFolder,
+  // clean: buildFolder,
+  clean: [
+    `${buildFolder}/css/`,
+    `${buildFolder}/js/`,
+    `${buildFolder}/images/`,
+  ],
   buildFolder: buildFolder,
   srcFolder: srcFolder,
   rootFolder: rootFolder,

@@ -1,7 +1,9 @@
 import fileInclude from "gulp-file-include";
 import webpHtml from "gulp-webp-html";
+import dayjs from 'dayjs'; // Для работы с датами
 
 export const html = () => {
+  const now = dayjs().format('MMDDHHmm');
   return app.gulp
     .src([
       app.path.src.html,
@@ -20,6 +22,8 @@ export const html = () => {
       basepath: '@file'
     }))
     .pipe(app.plugins.replace(/@img\//g, "images/"))
+    .pipe(app.plugins.replace(/(href=".*?\.css)(\?ver=\d+)?"/g, `$1?ver=${now}"`))
+    .pipe(app.plugins.replace(/(src=".*?\.js)(\?ver=\d+)?"/g, `$1?ver=${version}"`))
     .pipe(app.plugins.if(app.isBuild, webpHtml({
 				extensions: ['jpg', 'jpeg', 'png', 'gif', 'webp'],
 				retina: {

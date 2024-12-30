@@ -2,7 +2,7 @@
   "svg with hover": {
 		"scope": "html",
     "prefix": "svg",
-    "body": ["<svg class=\"icon-svg $1__svg\" aria-hidden=\"true\">", "  <use xlink:href=\"images/icons/sprite.svg#$2\"></use>", "</svg>"],
+    "body": ["<svg class=\"icon-svg $1__svg\" aria-hidden=\"true\" preserveAspectRatio=\"xMidYMid meet\">", "  <use xlink:href=\"images/icons/sprite.svg#$2\"></use>", "</svg>"],
     "description": "include svg with hover"
   },
   "img": {
