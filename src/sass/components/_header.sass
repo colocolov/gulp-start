@@ -1,12 +1,12 @@
 .header
   padding: 30px 0
   background-color: #c3dde7
-  @include mediaTablet
-    position: fixed
-    background-color: $text
-    box-shadow: 0 1px 35px 0 rgba($black, 0.1)
-    z-index: 100
-    width: 100%
+  // @include mediaTablet
+  //   position: fixed
+  //   background-color: $text
+  //   box-shadow: 0 1px 35px 0 rgba($black, 0.1)
+  //   z-index: 100
+  //   width: 100%
   @include mediaPhone
     position: fixed
     top: 0
@@ -16,5 +16,12 @@
     background-color: $black
 
   &__container
-    @include fx-all
+    display: flex
+    align-items: center
+    justify-content: flex-end
+    gap: 0 20px
+
+  &__logo
+    @include mediaPhone
+      z-index: 5
 

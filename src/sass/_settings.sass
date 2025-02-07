@@ -73,14 +73,13 @@ input
     @include mediaPhone
       max-width: 100%
   &-left
-    //padding-right: calc( (100% - $containerWidth) / 2 + $containerPadding )
+    padding-right: calc( (100vw - #{$contentWidth}px) / 2)
     @include mediaDesk
       padding-right: $containerPadding + px
   &-right
-    //padding-left: calc( (100% - ($containerWidth + px)) / 2 + ($containerPadding + px) )
+    padding-left: calc( (100% - #{$contentWidth}px) / 2 + (#{$containerPadding}px) )
     @include mediaDesk
       padding-left: $containerPadding + px
-  //&-
 
 ._ibg
   position: relative

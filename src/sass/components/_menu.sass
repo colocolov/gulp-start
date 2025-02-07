@@ -1,7 +1,10 @@
 .menu
-  --height-span: 22px //--- ВЫСОТА БУРГЕРА
-  --width-span: 30px //--- ШИРИНА БУРГЕРА
-  --weight-span: 2px //--- ТОЛЩИНА ПОЛОСКИ БУРГЕРА
+  //--- ВЫСОТА БУРГЕРА
+  --height-span: 22px
+  //--- ШИРИНА БУРГЕРА
+  --width-span: 30px
+  //--- ТОЛЩИНА ПОЛОСКИ БУРГЕРА
+  --weight-span: 2px
   // margin-left: 50px
   &__body
     // margin-top: -5px
@@ -12,7 +15,8 @@
       width: 100%
       height: 100%
       padding: 150px 30px 50px 30px
-      background-color: rgba($text, 0.9) // ---------- ЦВЕТ ФОНА У МЕНЮ
+      // ---------- ЦВЕТ ФОНА У МЕНЮ
+      background-color: rgba($text, 0.9)
       overflow: auto
       transition: right 0.5s ease 0s
       z-index: 2
@@ -24,25 +28,33 @@
         top: 0
         right: -100%
         width: 100%
-        height: 85px
-        background-color: $black // ---------- ЦВЕТ ФОНА У ШАПКИ
+        height: 100px
+        // ---------- ЦВЕТ ФОНА У ШАПКИ
+        background-color: $black
         // background-color: $text
         transition: right 0.5s ease 0s
         z-index: 2
     &._active
       right: 0
+      // для ORDER меню 
+      display: flex
+      flex-direction: column
       &::before
         right: 0
   &__list
     @include fx-all
     flex-wrap: wrap
+    column-gap: 39px
+    justify-content: flex-end
+    row-gap: 10px
     @include mediaNotebook
-      flex-wrap: wrap
+      // flex-wrap: wrap
     @include mediaPhone
       flex-direction: column
       align-items: flex-end
       justify-content: flex-start
       order: 2
+      margin-bottom: 20px
     & .menu-item-has-children > a
       &::after
         content: ''
@@ -64,7 +76,7 @@
       display: flex
       justify-content: space-between
       transition: background-color 0.3s ease
-      @media (any-hover: hover)
+      @media (any-hover: hover) and (pointer: fine)
       &:hover
         background-color: lighten($black, 3)
         &:last-child a
@@ -74,8 +86,9 @@
         margin-bottom: 7px
       @include mediaPhone
         width: 100%
-        padding: 10px 20px
+        padding: 10px 0px
         margin-bottom: 0
+        color: $white
     & li.current-menu-item a
       background-color: lighten($black, 3)
     & li ul
@@ -85,7 +98,6 @@
       background-color: lighten($black, 1)
       z-index: 50
       //display: none
-
       overflow: hidden
       max-height: 0
       opacity: 0
@@ -121,8 +133,8 @@
     color: $text // ---------- ЦВЕТ ССЫЛОК НА ДЕСКТОПЕ
     text-transform: uppercase
     transition: color 0.3s ease
-    &:not(:last-child)
-      margin-right: 39px
+    // &:not(:last-child)
+    //   margin-right: 39px
     // нижняя линия при наведении
     &::before
       position: absolute
@@ -133,7 +145,7 @@
       height: 2px
       background-color: $white
       transition: width 0.5s ease
-    @media (any-hover: hover)
+    @media (any-hover: hover) and (pointer: fine)
       &:hover
         &::before
           width: 100%
@@ -147,7 +159,7 @@
 
 
     // субменю
-    // @media (any-hover: hover)
+    // @media (any-hover: hover) and (pointer: fine)
     //   &:hover
     //     .menu__sub-list
     //       visibility: visible
@@ -168,13 +180,16 @@
     //     .menu__arrow
     //       transform: rotate(-180deg)
     @include mediaPhone
-      margin-bottom: 40px
+      margin-bottom: 10px
       font-weight: 800
       font-size: 32px
-      color: $text // ---------- ЦВЕТ ССЫЛОК НА МОБИЛКАХ
+      // ---------- ЦВЕТ ССЫЛОК НА МОБИЛКАХ
+      color: $text
+      &::before
+        content: none
       &:not(:last-child)
         margin-right: 0
-        margin-bottom: 10px
+        margin-bottom: 0
   // стрелка
   // &__arrow
   //   width: 12px
@@ -326,7 +341,7 @@
 
 // .menu
 //   &-item-language
-//     @media (any-hover: hover)
+//     @media (any-hover: hover) and (pointer: fine)
 //       &:hover
 //         .sub-menu
 //           pointer-events: auto
@@ -389,7 +404,7 @@
   @include mediaPhone
     padding: 0
     width: auto
-  @media (any-hover: hover)
+  @media (any-hover: hover) and (pointer: fine)
     &:hover
       background-color: lighten($black, 3)
 

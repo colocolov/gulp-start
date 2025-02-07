@@ -13,7 +13,7 @@
   transition: color 0.3s ease-in
   &:not(:last-child)
     margin-right: 20px
-  @media (any-hover: hover)
+  @media (any-hover: hover) and (pointer: fine)
     &:hover
       color: $red
 
@@ -29,7 +29,7 @@
   height: 25px
   transition: transform 0.5s ease-in-out
   cursor: pointer
-  @media (any-hover: hover)
+  @media (any-hover: hover) and (pointer: fine)
     &:hover
       transform: scale(1.1)
   &::before
