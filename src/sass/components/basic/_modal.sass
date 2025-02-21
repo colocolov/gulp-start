@@ -1,46 +1,95 @@
 /* Модальное окно */
 .modal
-  display: none
   position: fixed
-  z-index: 10
   left: 0
   top: 0
-  width: 100%
-  height: 100%
-  background-color: rgba($graphite, 0.5)
-  // filter: blur(20px)
+  right: 0
+  bottom: 0
+  opacity: 0
+  visibility: hidden
+  z-index: 100
+  // width: 100%
+  // height: 100%
+  background-color: rgba($white, 0.8)
+  cursor: pointer
+  overflow-y: auto
+  overflow-x: hidden
+  text-align: center
+  transition: 0.6s ease-in
+  &::before
+    content: ''
+    display: inline-block
+    vertical-align: middle
+    height: 100%
+  &.open
+    opacity: 1
+    visibility: visible
+    & .modal__content
+      opacity: 1
+      transform: translate(0px, 0%)
 
-  &-content
-    background-color: $graphite
-    margin: 20% auto
-    padding: 40px
-    border-radius: 20px
+  &__content
+    position: relative
     width: 100%
     max-width: 680px
+    margin: 50px auto
+
+    display: inline-block
+    vertical-align: middle
+
+    background-color: $black
+    padding: 40px 50px
+    border-radius: 20px
     text-align: center
     color: $grey
+    cursor: auto
+
+    opacity: 0
+    transform: translate(0px, -100%)
+
+    transition: 0.6s ease-in
+
+    @include mediaPhone
+      width: 95%
+    @include mediaPhoneSm
+      padding: 20px 30px
+
+  &__suptitle
+    font-size: 26px
+    text-transform: uppercase
 
   &__head
     text-transform: uppercase
     @include font(600, 30, 35)
+    margin-bottom: 36px
+  &__text
+    letter-spacing: 0.05em
+    margin-bottom: 20px
+    span
+      font-weight: 700
 
-.close
-  color: $graphite
-  font-size: 30px
-  font-weight: bold
-  position: absolute
-  top: 20px
-  right: 20px
 
-.close:hover,
-.close:focus
-  color: black
-  text-decoration: none
-  cursor: pointer
+  &__btn
+    display: block
+    margin: 0 auto
+    margin-bottom: 37px
+    transition: border-color 0.3s ease-in
+    @media (any-hover: hover) and (pointer: fine)
+      &:hover
+        color: $white
+        border-color: $white
 
-input[type="tel"]
-  padding: 10px
-  margin: 10px 0
-  width: 100%
-  border-radius: 4px
-  border: 1px solid #ccc
+  &__close
+    color: $white
+    font-size: 30px
+    line-height: 1
+    font-weight: bold
+    position: absolute
+    top: 20px
+    right: 20px
+    transition: color 0.3s ease
+    &:hover,
+    &:focus
+      color: #a94a20
+      text-decoration: none
+      cursor: pointer
