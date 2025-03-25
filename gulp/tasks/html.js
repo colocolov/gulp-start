@@ -23,7 +23,7 @@ export const html = () => {
     }))
     .pipe(app.plugins.replace(/@img\//g, "images/"))
     .pipe(app.plugins.replace(/(href=".*?\.css)(\?ver=\d+)?"/g, `$1?ver=${now}"`))
-    .pipe(app.plugins.replace(/(src=".*?\.js)(\?ver=\d+)?"/g, `$1?ver=${version}"`))
+    .pipe(app.plugins.replace(/(src=".*?\.js)(\?ver=\d+)?"/g, `$1?ver=${now}"`))
     .pipe(app.plugins.if(app.isBuild, webpHtml({
 				extensions: ['jpg', 'jpeg', 'png', 'gif', 'webp'],
 				retina: {

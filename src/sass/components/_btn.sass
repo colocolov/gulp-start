@@ -5,15 +5,18 @@
   cursor: pointer
   outline: none
 
+a.btn
+  color: inherit
+
 .btn
   // align-self: center // если кнпка находится во flex-контейнере и нужно выровнять ее по середине
   display: inline-block
   background: $bgc
-  border-radius: 20px
+  // border-radius: 20px
   // border: 2px solid $green
   padding: 10px 32px
   color: $white
-  @include font(700, 16, 2)
+  @include font(700, 16, 18)
   text-align: center
   text-transform: uppercase
   transition: background 0.5s ease-in-out, color 0.5s ease-in-out, transform 0.3s ease

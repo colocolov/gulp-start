@@ -1,0 +1,46 @@
+<p>Пример анимации залоголовка и текста на сайте. Для примера анимируем заголовок и ниже простой текст.</p>
+<p>Для использования анимации заголовка, нужно его обернуть в любой html-тег и задать тегу класс <code
+              class="code">.head-animate</code>.</p>
+<p>Еще есть возможно задать повторную анимацию заголовка, после того как пользователь еще раз при
+        скроле сайта его снова. Для этого нужно использовать data-атрибут <code class="code">data-repeat="true"</code>.
+        По умолчанию
+        значение задано <b>false</b>, что означает что повтор аниамции отключен.</p>
+<p>Так же есть еще параметр <code class="code">data-letter-delay="0.2"</code>, который отвечает за задержкe между
+        буквами (по умолчанию 0.08s).</p>
+<p>И есть второй параметр <code class="code">data-word-delay="0.4"</code>, который отвечает за задержкe между словами
+        (по умолчанию 0.4s).</p>
+<p>Чем значение в секундах выставлено больше, тем медленнее анимация.</p>
+<br>
+<br>
+<p class="text-animate">Для использования анимации текста, нужно его обернуть в любой html-тег и задать тегу класс <code
+              class="code">.text-animate</code>.</p>
+<br>
+
+
+<div class="scroll-animation" data-line-duration="7000" data-sections-count="3" data-repeat="true">
+        <div class="line"></div> <!-- Общая линия -->
+        <div class="sections">
+                <div class="section">
+                        <h2 class="title">Заголовок 1</h2>
+                        <p class="description">Описание 1 Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Atque,
+                                incidunt.</p>
+                </div>
+                <div class="section">
+                        <h2 class="title">Заголовок 2</h2>
+                        <p class="description">Описание 2 Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Atque,
+                                incidunt.</p>
+                </div>
+                <div class="section">
+                        <h2 class="title">Заголовок 3</h2>
+                        <p class="description">Описание 3 Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Atque,
+                                incidunt.</p>
+                </div>
+                <!-- <div class="section">
+                        <h2 class="title">Заголовок 4</h2>
+                        <p class="description">Описание 4</p>
+                </div> -->
+        </div>
+</div>

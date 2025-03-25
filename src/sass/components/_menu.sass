@@ -89,6 +89,7 @@
         padding: 10px 0px
         margin-bottom: 0
         color: $white
+        text-align: right
     & li.current-menu-item a
       background-color: lighten($black, 3)
     & li ul
@@ -290,7 +291,7 @@
           width: auto
           // order: 2
           &:hover
-            background-color: $blue
+            background-color: $black
           &::after
             content: none !important
         & ul
@@ -303,11 +304,11 @@
           align-items: center
           top: 0
           opacity: 1
-          background-color: $blue
+          background-color: $black
           & a
             padding-left: 10px !important
             &:hover
-              background-color: $blue
+              background-color: $black
 
     // меню языков в строку на мобилках 
     @include mediaPhone

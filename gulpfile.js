@@ -36,7 +36,8 @@ function watcher() {
   gulp.watch(path.watch.files, copy);
 }
 // Последовательная обработка шрифтов
-const fonts = gulp.series(otfToTtf, ttfToWoff);
+// const fonts = gulp.series(otfToTtf, ttfToWoff);
+const fonts = gulp.series(ttfToWoff);
 
 // Основные задачи
 const mainTasks = gulp.parallel(copy, sass, html, js, images, svgSprite);
