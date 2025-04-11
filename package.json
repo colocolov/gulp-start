@@ -5,7 +5,7 @@
   "main": "gulpfile.js",
   "type": "module",
   "scripts": {
-    "dev": "gulp dev",
+    "dev": "gulp",
     "build": "gulp build --build",
     "fonts": "gulp fonts",
     "svg": "gulp svg",
