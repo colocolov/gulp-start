@@ -42,6 +42,7 @@ export const sass = () => {
         )
       )
       // Расскоментировать строку ниже, если нужен не сжатый дублль файла стилей
+      .pipe(sourcemaps.write())
       .pipe(app.gulp.dest(app.path.build.css))
       .pipe(app.plugins.if(app.isBuild, cleanCss()))
       .pipe(
@@ -50,7 +51,7 @@ export const sass = () => {
         })
       )
       // .pipe(app.plugins.if(sourcemaps.write())
-      .pipe(sourcemaps.write())
+      // вернуть сюда sourcemap
       .pipe(app.gulp.dest(app.path.build.css))
       .pipe(app.plugins.browserSync.stream())
   );
