@@ -16,7 +16,7 @@ export const sass = () => {
     app.gulp
       .src(app.path.src.sass, {})
       // .pipe(app.plugins.if(sourcemaps.init()))
-      .pipe(sourcemaps.init())
+      .pipe(app.plugins.if(app.isDev, sourcemaps.init()))
       .pipe(
         app.plugins.plumber(
           app.plugins.notify.onError({
@@ -42,7 +42,7 @@ export const sass = () => {
         )
       )
       // Расскоментировать строку ниже, если нужен не сжатый дублль файла стилей
-      .pipe(sourcemaps.write())
+      .pipe(app.plugins.if(app.isDev, sourcemaps.write()))
       .pipe(app.gulp.dest(app.path.build.css))
       .pipe(app.plugins.if(app.isBuild, cleanCss()))
       .pipe(

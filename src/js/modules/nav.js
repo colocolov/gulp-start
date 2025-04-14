@@ -78,3 +78,14 @@ function removeActiveClass() {
   iconMenu.classList.remove("_active");
   menuBody.classList.remove("_active");
 }
+
+// активный язык для Polylang
+const menuLang = document.querySelector('.menu-languages');
+const mediaQuery = window.matchMedia('(max-width: 767px)');
+if (menuLang && menuLang.firstElementChild) {
+  if (mediaQuery.matches) {
+    menuLang.firstElementChild.classList.add('current-languages');
+  } else {
+    menuLang.firstElementChild.classList.remove('current-languages');
+  }
+}

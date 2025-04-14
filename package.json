@@ -1,6 +1,6 @@
 {
   "name": "gulp-start",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "My Gulptask v2.2",
   "main": "gulpfile.js",
   "type": "module",
@@ -14,11 +14,11 @@
   "author": "Stas Kolokolov",
   "license": "ISC",
   "dependencies": {
-    "dayjs": "^1.11.13",
     "gulp-cli": "^2.3.0"
   },
   "devDependencies": {
     "browser-sync": "^2.29.3",
+    "dayjs": "^1.11.13",
     "del": "^6.0.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
