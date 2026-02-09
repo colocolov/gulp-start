@@ -11,6 +11,7 @@ import "./modules/animateProgresLine.js";
 //import "./modules/main-slider.js";
 
 //import "./modules/modal.js";
+//import "./modules/paralax.js";
 
 //import * as navMenu from "./modules/accordeon.js";
 //import * as navMenu from "./modules/revies.js";

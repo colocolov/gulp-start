@@ -44,6 +44,8 @@ if (_vars.heroSliderEl) {
     fadeEffect: {
       crossFade: true,
     },
+    // позволяет плавное появление слайдов вне контейнера
+    watchSlidesProgress: true,
     // показ кол-ва слайдов (работает, когда откл effect: "fade")
     slidesPerView: 1.2,
     // расстояние между слайдами

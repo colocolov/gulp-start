@@ -13,11 +13,19 @@
   // основные настройки и размеры оберки слайдера
   // !!!ОБЯЗАТЕЛЬНО ПОМЕНЯТЬ!!!
   &__slider
-    width: 200px // задать по макету
+    width: 100% // задать по макету
     height: 200px // задать по макету
     &-wrap
       height: 399px // задать по макету
       display: flex // чтобы слайды шли в ряд
+
+    // для плавного появления слайда.
+    // работает только при вкл функции в js - watchSlidesProgress: true,
+    & .swiper-slide
+      opacity: 0
+      transition: opacity 0.3s ease-in
+    & .swiper-slide-visible
+      opacity: 1
 
   &__slide
     display: flex

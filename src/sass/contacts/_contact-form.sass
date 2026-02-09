@@ -1,0 +1,71 @@
+.form
+  // border: 1px solid $red
+  // margin-bottom: 40px
+  &__inner
+    display: flex
+    flex-wrap: wrap
+    column-gap: 20px
+    row-gap: 49px
+    margin-bottom: 40px
+  &__line
+    border-bottom: 1px solid $white
+    flex: 1 1 48%
+    height: 34px
+    p
+      width: 100%
+    @include mediaPhoneMid
+      margin-right: 40px
+  &__input
+    background-color: transparent
+    height: 34px
+    width: 100%
+    transition: padding-left 0.5s ease-in
+    color: $white
+    &::placeholder
+      // font-family: 'Montserrat'
+      color: rgba($white, 0.5)
+      transition: color 0.5s ease
+    &:focus
+      padding-left: 10px
+      // border: 1px solid $white
+
+  &__text
+    height: 200px
+    width: 100%
+  &__textarea
+    border: 1px solid $white
+    width: 100%
+    color: $white
+    height: 100%
+    padding: 10px
+    background-color: transparent
+    transition: padding 0.5s ease-in
+    outline: none
+    resize: none
+    &::placeholder
+      color: rgba($white, 0.5)
+      transform: translateY(157px)
+    &:focus
+      border: 1px solid $white
+      padding-left: 20px
+
+
+.wpcf7-form
+  display: flex
+  flex-direction: column
+.wpcf7 .wpcf7-response-output
+  margin-right: 0 !important
+  margin-left: 0 !important
+  padding: 17px !important
+  font-size: 16px
+  order: 1
+  border-color: $red !important // ------------- ЦВЕТ РАМКИ У ОШИБКИ
+.wpcf7-not-valid-tip
+  font-weight: 600
+  position: relative
+  bottom: 0
+  padding-left: 10px
+.wpcf7-form p
+  width: 100%
+  @include mediaPhone
+    text-align: center

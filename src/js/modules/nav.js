@@ -20,6 +20,7 @@ function documentActions(e) {
 }
 
 // проверка, является ли уствройство мобильным
+/*
 const isMobile = {
   Android: function () {
     return navigator.userAgent.match(/Android/i);
@@ -46,11 +47,11 @@ const isMobile = {
     );
   },
 };
-
 if (isMobile.any()) {
   // document.querySelector('html').classList.add('_touch');
   document.body.classList.add("_touch");
-}
+} 
+*/
 
 // меню бургер
 const body = document.querySelector(".page__body");
@@ -72,6 +73,24 @@ if (menuLink.length) {
     });
   });
 }
+
+// --- клик вне меню и закрыть меню если открыто
+// document.addEventListener('click', function (e) {
+//   if (!menuBody || !iconMenu) return;
+
+//   const clickInsideMenu = e.target.closest('.menu__body');
+//   const clickOnBurger = e.target.closest('.menu__icon');
+
+//   // если меню открыто и клик вне меню и не по бургеру
+//   if (
+//     menuBody.classList.contains('_active') &&
+//     !clickInsideMenu &&
+//     !clickOnBurger
+//   ) {
+//     removeActiveClass();
+//   }
+// });
+
 
 function removeActiveClass() {
   body.classList.remove("_lock");
